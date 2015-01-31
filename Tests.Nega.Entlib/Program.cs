@@ -8,18 +8,19 @@ using System.Diagnostics;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.InterceptionExtension;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
-
-using Nega.Entlib;
 using Microsoft.Practices.EnterpriseLibrary.PolicyInjection;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 
+using Nega.Entlib;
+
 namespace Tests.Nega.Entlib
 {
+
     class Program
     {
         static void Main(string[] args)
         {
-            //UsingPIABWithContainer();
+            UsingPIABWithContainer();
 
             Console.WriteLine();
             Console.WriteLine(new string('=', 79));
@@ -78,9 +79,19 @@ namespace Tests.Nega.Entlib
             // This example loads the configuration from the config file.
             PolicyInjection.SetPolicyInjector(new PolicyInjector(new SystemConfigurationSource(false)), false);
 
-            var obj = PolicyInjection.Create<InterceptableObj>();
+            var obj2 = PolicyInjection.Create<InterceptableObj2>();
+            Console.WriteLine("*** Invoking the Save method ***");
+            obj2.Save();
+            Console.WriteLine("*** Invoking the second Save method ***");
+            obj2.Save(new object());
+            Console.WriteLine("*** Invoking the SaveAnother method ***");
+            obj2.SaveAnother();
 
-            // Use the interceptable type.
+            Console.WriteLine();
+            Console.WriteLine(new string('-', 79));
+            Console.WriteLine();
+
+            var obj = PolicyInjection.Create<InterceptableObj>();
             Console.WriteLine("*** Invoking the Save method ***");
             obj.Save();
             Console.WriteLine("*** Invoking the SaveSomething method ***");
@@ -122,6 +133,18 @@ namespace Tests.Nega.Entlib
         public void DeleteSomething() { }
 
         public object GetSomething() { return new object(); }
+    }
+
+    public class InterceptableObj2 : MarshalByRefObject
+    {
+        public void Save() { }
+
+        public void Save(object o) { }
+
+        public void SaveAnother() { }
+
+        public void Modified() { }
+
     }
 
 }

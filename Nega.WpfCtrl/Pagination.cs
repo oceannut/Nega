@@ -29,12 +29,20 @@ namespace Nega.WpfCtrl
 
         public event PagingEventHandler PageIndexChanged;
 
+        private static Style pageButtonStyle;
+
         private Panel pageButtonPanel;
         private int startPageIndex;
+        private readonly object lockObj = new object();
 
         static Pagination()
         {
             DefaultStyleKeyProperty.OverrideMetadata(typeof(Pagination), new FrameworkPropertyMetadata(typeof(Pagination)));
+            try
+            {
+                pageButtonStyle = System.Windows.Application.Current.Resources["PageButtonStyle"] as Style;
+            }
+            catch { }
         }
 
         public override void OnApplyTemplate()
@@ -391,26 +399,37 @@ namespace Nega.WpfCtrl
         {
             if (PageCount > 0)
             {
-                pageButtonPanel.Children.Clear();
-                int end = PageCount - 5 > startPageIndex ? startPageIndex + 5 : PageCount;
-                for (int i = startPageIndex; i < end; i++)
+                lock (lockObj)
                 {
-                    ToggleButton button = new ToggleButton
+                    if (pageButtonPanel == null)
+                    {
+                        return;
+                    }
+                    pageButtonPanel.Children.Clear();
+                    int end = PageCount - 5 > startPageIndex ? startPageIndex + 5 : PageCount;
+                    for (int i = startPageIndex; i < end; i++)
+                    {
+                        ToggleButton button = new ToggleButton
+                            {
+                                Content = (i + 1).ToString(),
+                                Style = pageButtonStyle,
+                                Command = PageCommand,
+                                CommandParameter = i
+                            };
+                        if (i == PageIndex)
                         {
-                            Content = (i + 1).ToString(),
-                            Style = System.Windows.Application.Current.Resources["PageButtonStyle"] as Style,
-                            Command = PageCommand,
-                            CommandParameter = i
-                        };
-                    if (i == PageIndex)
-                    {
-                        button.IsChecked = true;
+                            button.IsChecked = true;
+                        }
+                        else
+                        {
+                            button.IsChecked = false;
+                        }
+                        if (pageButtonPanel == null)
+                        {
+                            return;
+                        }
+                        pageButtonPanel.Children.Add(button);
                     }
-                    else
-                    {
-                        button.IsChecked = false;
-                    }
-                    pageButtonPanel.Children.Add(button);
                 }
             }
         }

@@ -16,14 +16,9 @@ namespace Nega.WcfUnity
 
         private readonly IUnityContainer container;
 
-        public IUnityContainer Container
-        {
-            get { return container; }
-        }
-
         public UnityServiceHostFactory()
         {
-            container = new UnityContainer();
+            container = ObjectsRegistry.SoloInstance.Container;
         }
 
         protected override ServiceHost CreateServiceHost(Type serviceType,

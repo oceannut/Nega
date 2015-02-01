@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B7EEE46C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Nega.Entlib", "Tests.Nega.Entlib\Tests.Nega.Entlib.csproj", "{0AAFAA2A-656C-4D16-9326-D79EF8AFE7C1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nega.Data", "Nega.Data\Nega.Data.csproj", "{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -53,6 +55,10 @@ Global
 		{0AAFAA2A-656C-4D16-9326-D79EF8AFE7C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AAFAA2A-656C-4D16-9326-D79EF8AFE7C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AAFAA2A-656C-4D16-9326-D79EF8AFE7C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

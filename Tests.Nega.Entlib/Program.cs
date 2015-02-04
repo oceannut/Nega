@@ -20,7 +20,7 @@ namespace Tests.Nega.Entlib
     {
         static void Main(string[] args)
         {
-            UsingPIABWithContainer();
+            //UsingPIABWithContainer();
 
             Console.WriteLine();
             Console.WriteLine(new string('=', 79));

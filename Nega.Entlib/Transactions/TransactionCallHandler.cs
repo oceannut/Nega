@@ -52,7 +52,7 @@ namespace Nega.Entlib
             
             using (TransactionScope scope = CreateTransactionScope())
             {
-                Console.WriteLine("begin transaction");
+                //Console.WriteLine("begin transaction");
 
                 IMethodReturn result = getNext()(input, getNext);
                 if (result.Exception == null)
@@ -60,7 +60,7 @@ namespace Nega.Entlib
                     scope.Complete();
                 }
 
-                Console.WriteLine("end transaction");
+                //Console.WriteLine("end transaction");
 
                 return result;
             }

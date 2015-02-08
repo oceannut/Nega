@@ -41,6 +41,9 @@
   <ItemGroup>
     <Compile Include="Domain\ITimestampData.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
+    <Compile Include="Exceptions\CyclicInheritanceException.cs" />
+    <Compile Include="Exceptions\ObjectAlreadyExistedException.cs" />
+    <Compile Include="Exceptions\ObjectNotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

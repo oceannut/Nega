@@ -26,7 +26,11 @@ namespace Tests.Nega.Entlib
             Console.WriteLine(new string('=', 79));
             Console.WriteLine();
 
-            UsingPIABWithFacade();
+            //UsingPIABWithFacade();
+
+            Test();
+
+            //Test2();
 
             Console.WriteLine("Press any key to exit.");
             Console.ReadKey();
@@ -107,6 +111,67 @@ namespace Tests.Nega.Entlib
 
         }
 
+        static void Test()
+        {
+            using (var container = new UnityContainer())
+            {
+
+                container.AddNewExtension<Interception>();
+
+                container.RegisterType<IEmpolyeeService, EmpolyeeServiceImpl>(new Interceptor<InterfaceInterceptor>(),
+                    new InterceptionBehavior<PolicyInjectionBehavior>());
+                //container.RegisterType<IEmpolyeeService, EmpolyeeServiceImpl>();
+                container.Configure<Interception>().AddPolicy("Save")
+                     .AddMatchingRule<MemberNameMatchingRule>(new InjectionConstructor(new InjectionParameter("Save*")))
+                     .AddCallHandler<TransactionCallHandler>(new ContainerControlledLifetimeManager(), new InjectionConstructor());
+                container.Configure<Interception>().AddPolicy("Update")
+                     .AddMatchingRule<MemberNameMatchingRule>(new InjectionConstructor(new InjectionParameter("Update*")))
+                     .AddCallHandler<TransactionCallHandler>(new ContainerControlledLifetimeManager(), new InjectionConstructor());
+
+
+                var obj = container.Resolve<IEmpolyeeService>();
+
+                // Use the interceptable type.
+                Console.WriteLine("*** Invoking the Save method ***");
+                obj.SaveEmpolyee(new Emoployee("Tom"));
+                Console.WriteLine("*** Invoking the Update method ***");
+                obj.UpdateEmpolyee(new Emoployee("Jerry"));
+                Console.WriteLine("*** Invoking the Get method ***");
+                obj.GetEmpolyee();
+
+            }
+        }
+
+        static void Test2()
+        {
+            using (var container = new UnityContainer())
+            {
+
+                container.AddNewExtension<Interception>();
+
+                container.RegisterType<Drawer>(new Interceptor<VirtualMethodInterceptor>(),
+                    new InterceptionBehavior<PolicyInjectionBehavior>());
+                container.Configure<Interception>().AddPolicy("Draw")
+                     .AddMatchingRule<MemberNameMatchingRule>(new InjectionConstructor(new InjectionParameter("Draw*")))
+                     .AddCallHandler<TransactionCallHandler>(new ContainerControlledLifetimeManager(), new InjectionConstructor());
+                container.Configure<Interception>().AddPolicy("Update")
+                     .AddMatchingRule<MemberNameMatchingRule>(new InjectionConstructor(new InjectionParameter("Update*")))
+                     .AddCallHandler<TransactionCallHandler>(new ContainerControlledLifetimeManager(), new InjectionConstructor());
+
+
+                var obj = container.Resolve<Drawer>();
+
+                // Use the interceptable type.
+                Console.WriteLine("*** Invoking the DrawSomthing method ***");
+                obj.DrawSomthing();
+                Console.WriteLine("*** Invoking the DrawCircle method ***");
+                obj.DrawCircle();
+                Console.WriteLine("*** Invoking the Update method ***");
+                obj.Update();
+
+            }
+        }
+
         private static void ConfigureLogger()
         {
             //var configuration = new LoggingConfiguration();
@@ -145,6 +210,61 @@ namespace Tests.Nega.Entlib
 
         public void Modified() { }
 
+    }
+
+    public class Emoployee
+    {
+        public Emoployee(string name)
+        {
+            Console.WriteLine("Hi, my name is " + name);
+        }
+    }
+
+    public interface IEmpolyeeService
+    {
+        void SaveEmpolyee(Emoployee entity);
+
+        void UpdateEmpolyee(Emoployee entity);
+
+        Emoployee GetEmpolyee();
+    }
+
+    public class EmpolyeeServiceImpl : IEmpolyeeService
+    {
+
+        public void SaveEmpolyee(Emoployee entity)
+        {
+            Console.WriteLine("save employee");
+        }
+
+        public void UpdateEmpolyee(Emoployee entity)
+        {
+            Console.WriteLine("update employee");
+        }
+
+        public Emoployee GetEmpolyee()
+        {
+            Console.WriteLine("get employee");
+            return new Emoployee("Always");
+        }
+    }
+
+    public class Drawer
+    {
+        public virtual void DrawSomthing()
+        {
+            Console.WriteLine("draw somthing");
+        }
+
+        public void DrawCircle()
+        {
+            Console.WriteLine("draw circle");
+        }
+
+        public void Update()
+        {
+            Console.WriteLine("update");
+        }
     }
 
 }

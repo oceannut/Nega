@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="Nega.Data.GenericDao&lt;T&gt;" Collapsed="true">
-    <Position X="4.5" Y="0.5" Width="1.5" />
+    <Position X="5.75" Y="4.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAIAAAAAAAABAAAAACAQAAAEIAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAQAAIAAAAAAAABAAAAACAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GenericDao.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Nega.Data.GenericPageableDao&lt;T&gt;" Collapsed="true">
-    <Position X="4.5" Y="1.75" Width="1.5" />
+    <Position X="4.5" Y="5.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GenericPageableDao.cs</FileName>
@@ -17,7 +17,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="Nega.Data.PagingRequest" Collapsed="true">
-    <Position X="5.5" Y="6.5" Width="1.5" />
+    <Position X="10.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAEAIAAAAAAAAAEAAAEAAAAAA=</HashCode>
       <FileName>PagingRequest.cs</FileName>
@@ -27,31 +27,46 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="Nega.Data.Paging&lt;T&gt;" Collapsed="true">
-    <Position X="10" Y="0.5" Width="1.5" />
+    <Position X="13" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAARAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Paging.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Nega.Data.Sortable" Collapsed="true">
-    <Position X="5.5" Y="4.5" Width="1.5" />
+    <Position X="10.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAgAA=</HashCode>
       <FileName>Sortable.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="Nega.Data.IDao&lt;T&gt;" Collapsed="true">
-    <Position X="7.5" Y="0.5" Width="1.5" />
+  <Class Name="Nega.Data.GenericQueryDao&lt;T&gt;" Collapsed="true">
+    <Position X="6.75" Y="5.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAQAAIAAAAAAAABAAAAACAQAAAEIAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>GenericQueryDao.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Nega.Data.IDao&lt;T&gt;" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAIAAAAAAAABAAAAACAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IDao.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="Nega.Data.IPageableDao&lt;T&gt;" Collapsed="true">
-    <Position X="7.5" Y="1.75" Width="1.5" />
+    <Position X="4.5" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IPageableDao.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nega.Data.IQueryDao&lt;T&gt;" Collapsed="true">
+    <Position X="6.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>IQueryDao.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Microsoft YaHei UI" Size="9" />

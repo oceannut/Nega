@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Domain\ICategoryable.cs" />
+    <Compile Include="Domain\IDisuseable.cs" />
     <Compile Include="Domain\ITimestampData.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\CyclicInheritanceException.cs" />

@@ -66,20 +66,6 @@ namespace Nega.Data
         /// <returns>对象存在返回true，否则不存在返回false。</returns>
         bool IsExist(object id);
 
-        /// <summary>
-        /// 查找符合输入条件的对象个数。
-        /// </summary>
-        /// <param name="values">输入的条件数组。</param>
-        /// <returns>返回对象个数。</returns>
-        long Count(params object[] values);
-
-        /// <summary>
-        /// 查找符合输入条件的对象集。
-        /// </summary>
-        /// <param name="values">输入的条件数组。</param>
-        /// <returns>返回对象集。</returns>
-        IList<T> List(params object[] values);
-
     }
 
 }

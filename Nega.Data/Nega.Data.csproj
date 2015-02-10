@@ -41,8 +41,10 @@
   <ItemGroup>
     <Compile Include="GenericDao.cs" />
     <Compile Include="GenericPageableDao.cs" />
+    <Compile Include="GenericQueryDao.cs" />
     <Compile Include="IDao.cs" />
     <Compile Include="IPageableDao.cs" />
+    <Compile Include="IQueryDao.cs" />
     <Compile Include="Paging.cs" />
     <Compile Include="PagingRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

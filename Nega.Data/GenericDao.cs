@@ -49,16 +49,6 @@ namespace Nega.Data
             return false;
         }
 
-        public virtual long Count(params object[] values)
-        {
-            return 0;
-        }
-
-        public virtual IList<T> List(params object[] values)
-        {
-            return new List<T>();
-        }
-
     }
 
 }

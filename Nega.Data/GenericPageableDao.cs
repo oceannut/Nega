@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Nega.Data
 {
-    public class GenericPageableDao<T> : GenericDao<T>, IPageableDao<T>
+    public class GenericPageableDao<T, TId> : GenericDao<T, TId>, IPageableDao<T, TId>
     {
-        public Paging<T> Page(PagingRequest request, params object[] values)
+        public virtual Paging<T> Page(PagingRequest request, params object[] values)
         {
             return new Paging<T>();
         }

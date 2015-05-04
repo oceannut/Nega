@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Nega.Data
 {
 
-    public interface IQueryDao<T> : IDao<T>
+    public interface IQueryDao<T, TId> : IDao<T, TId>
     {
 
         /// <summary>

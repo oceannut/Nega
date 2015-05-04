@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nega.Data
 {
-    public class GenericQueryDao<T> : GenericDao<T>, IQueryDao<T>
+    public class GenericQueryDao<T, TId> : GenericDao<T, TId>, IQueryDao<T, TId>
     {
 
         public virtual long Count(params object[] values)

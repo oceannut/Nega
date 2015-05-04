@@ -9,7 +9,7 @@ namespace Nega.Data
     public class Sortable
     {
 
-        public string Field { get; set; }
+        //public string Field { get; set; }
 
         public bool Asc { get; set; }
 

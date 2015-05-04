@@ -6,45 +6,55 @@ using System.Text;
 namespace Nega.Data
 {
 
-    public class GenericDao<T> : IDao<T>
+    public class GenericDao<T, TId> : IDao<T, TId>
     {
 
-        public virtual bool Save(T entity)
+        public virtual int Save(T entity)
         {
-            return false;
+            return 0;
         }
 
-        public virtual void Save(ICollection<T> col)
+        public virtual int Save(ICollection<T> col)
         {
-            
+            return 0;
         }
 
-        public virtual bool Update(T entity)
+        public virtual int Update(T entity)
         {
-            return false;
+            return 0;
         }
 
-        public virtual void Update(ICollection<T> col)
+        public virtual int Update(ICollection<T> col)
         {
-            
+            return 0;
         }
 
-        public virtual bool Delete(object id)
+        public virtual int Delete(TId id)
         {
-            return false;
+            return 0;
         }
 
-        public virtual void Delete(ICollection<object> col)
+        public virtual int Delete(ICollection<TId> col)
         {
-            
+            return 0;
         }
 
-        public virtual T Get(object id)
+        public virtual int Delete(T entity)
+        {
+            return 0;
+        }
+
+        public virtual int Delete(ICollection<T> col)
+        {
+            return 0;
+        }
+
+        public virtual T Get(TId id)
         {
             return default(T);
         }
 
-        public virtual bool IsExist(object id)
+        public virtual bool IsExist(TId id)
         {
             return false;
         }

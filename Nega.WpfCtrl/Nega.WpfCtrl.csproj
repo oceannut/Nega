@@ -47,6 +47,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CloseableTabItem.cs" />
     <Compile Include="PageIndexConverter.cs" />
     <Compile Include="Pagination.cs" />
     <Compile Include="PathButton.cs" />

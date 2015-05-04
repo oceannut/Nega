@@ -47,6 +47,9 @@
     <Compile Include="Exceptions\ObjectAlreadyExistedException.cs" />
     <Compile Include="Exceptions\ObjectNotFoundException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Treeing\Tree.cs" />
+    <Compile Include="Treeing\TreeNode.cs" />
+    <Compile Include="Treeing\TreeNodeCollection.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

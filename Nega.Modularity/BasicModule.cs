@@ -34,17 +34,17 @@ namespace Nega.Modularity
             this.name = name;
         }
 
-        public void Initialize()
+        public virtual void Initialize()
         {
             this.initialized = true;
         }
 
-        public void Destroy()
+        public virtual void Destroy()
         {
             this.initialized = false;
         }
 
-        public void Dispose()
+        public virtual void Dispose()
         {
             Destroy();
         }

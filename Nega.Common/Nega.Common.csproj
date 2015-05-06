@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Caching\CacheManager.cs" />
+    <Compile Include="Caching\ICache.cs" />
+    <Compile Include="Caching\ICacheFactory.cs" />
+    <Compile Include="Caching\InMemoryCache.cs" />
+    <Compile Include="Caching\InMemoryCacheFactory.cs" />
     <Compile Include="Domain\ICategoryable.cs" />
     <Compile Include="Domain\IDisuseable.cs" />
     <Compile Include="Domain\ITimestampData.cs" />
@@ -50,6 +56,9 @@
     <Compile Include="Treeing\Tree.cs" />
     <Compile Include="Treeing\TreeNode.cs" />
     <Compile Include="Treeing\TreeNodeCollection.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Caching\ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

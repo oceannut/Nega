@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Nega.Common.InMemoryCache" Collapsed="true">
+    <Position X="7.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACIAAAAAACCAAABAABAABAQAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\InMemoryCache.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Nega.Common.InMemoryCacheFactory" Collapsed="true">
+    <Position X="9" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\InMemoryCacheFactory.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Nega.Common.CacheManager" Collapsed="true">
+    <Position X="4.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAkAAAAIAAAAAAAACAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Caching\CacheManager.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Factory" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Field Name="registry" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Interface Name="Nega.Common.ICache" Collapsed="true">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAAAABAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\ICache.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nega.Common.ICacheFactory" Collapsed="true">
+    <Position X="4.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Caching\ICacheFactory.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

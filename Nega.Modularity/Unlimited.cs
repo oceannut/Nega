@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Nega.Modularity
 {
-    internal class Unlimited : IModuleLicence
+    public class Unlimited : IModuleLicence
     {
 
         private static readonly Unlimited solo = new Unlimited();
 
         private Unlimited() { }
 
-        internal static Unlimited Solo
+        public static Unlimited Solo
         {
             get { return solo; }
         }

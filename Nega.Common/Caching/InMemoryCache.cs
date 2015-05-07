@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Caching;
@@ -22,6 +23,17 @@ namespace Nega.Common
         public long Count
         {
             get { return this.cache.GetCount(name); }
+        }
+
+        public IEnumerable<KeyValuePair<string, object>> Items
+        {
+            get
+            {
+                foreach (var item in cache)
+                {
+                    yield return item;
+                }
+            }
         }
 
         public DateTimeOffset AbsoluteExpiration { get; set; }
@@ -65,6 +77,11 @@ namespace Nega.Common
         public object Get(string key)
         {
             return this.cache.Get(key, this.name);
+        }
+
+        public void Clear()
+        {
+            this.cache.Trim(100);
         }
 
         public void Dispose()

@@ -79,6 +79,22 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type local:PathButton}" BasedOn="{StaticResource PathButtonStyle}" x:Key="CloseWindowButton">
+        <Setter Property="Icon">
+            <Setter.Value>
+                <PathGeometry Figures="M1298 214q0 -40 -28 -68l-136 -136q-28 -28 -68 -28t-68 28l-294 294l-294 -294q-28 -28 -68 -28t-68 28l-136 136q-28 28 -28 68t28 68l294 294l-294 294q-28 28 -28 68t28 68l136 136q28 28 68 28t68 -28l294 -294l294 294q28 28 68 28t68 -28l136 -136q28 -28 28 -68 t-28 -68l-294 -294l294 -294q28 -28 28 -68z" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style TargetType="{x:Type local:PathButton}"  BasedOn="{StaticResource PathButtonStyle}" x:Key="MinWindowButton">
+        <Setter Property="Icon">
+            <Setter.Value>
+                <PathGeometry Figures="M1408 800v-192q0 -40 -28 -68t-68 -28h-1216q-40 0 -68 28t-28 68v192q0 40 28 68t68 28h1216q40 0 68 -28t28 -68z" />
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="{x:Type local:PathButton}" BasedOn="{StaticResource PathButtonStyle}" x:Key="FirstPageButton">
         <Setter Property="Icon">
             <Setter.Value>
@@ -119,10 +135,75 @@
         </Setter>
     </Style>
 
+    <Style TargetType="ToggleButton" x:Key="NormalWindowButton">
+        <Setter Property="SnapsToDevicePixels" Value="true" />
+        <Setter Property="OverridesDefaultStyle" Value="true" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ControlFocusVisual}" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type ToggleButton}">
+
+                    <Border TextBlock.Foreground="{TemplateBinding Foreground}" 
+                            Height="{TemplateBinding Height}" 
+                            Width="{TemplateBinding Width}"
+                            x:Name="PART_Border"
+                            CornerRadius="0"
+                            BorderThickness="0.5">
+
+                        <StackPanel Orientation="Horizontal" >
+                            <Border Padding="4 4 2 4" VerticalAlignment="Center" HorizontalAlignment="Center" Width="20" Height="20">
+                                <Grid >
+                                    <Path x:Name="PART_Path1" Visibility="Visible" Stroke="Gray" StrokeThickness="0.5" Fill="#8FCCCCCC" Stretch="Uniform" 
+                                  Data="M755 480q0 -13 -10 -23l-332 -332l144 -144q19 -19 19 -45t-19 -45t-45 -19h-448q-26 0 -45 19t-19 45v448q0 26 19 45t45 19t45 -19l144 -144l332 332q10 10 23 10t23 -10l114 -114q10 -10 10 -23zM1536 1344v-448q0 -26 -19 -45t-45 -19t-45 19l-144 144l-332 -332 q-10 -10 -23 -10t-23 10l-114 114q-10 10 -10 23t10 23l332 332l-144 144q-19 19 -19 45t19 45t45 19h448q26 0 45 -19t19 -45z"/>
+                                    <Path x:Name="PART_Path2" Visibility="Collapsed" Stroke="Gray" StrokeThickness="0.5" Fill="#8FCCCCCC" Stretch="Uniform" 
+                                  Data="M768 576v-448q0 -26 -19 -45t-45 -19t-45 19l-144 144l-332 -332q-10 -10 -23 -10t-23 10l-114 114q-10 10 -10 23t10 23l332 332l-144 144q-19 19 -19 45t19 45t45 19h448q26 0 45 -19t19 -45zM1523 1248q0 -13 -10 -23l-332 -332l144 -144q19 -19 19 -45t-19 -45 t-45 -19h-448q-26 0 -45 19t-19 45v448q0 26 19 45t45 19t45 -19l144 -144l332 332q10 10 23 10t23 -10l114 -114q10 -10 10 -23z"/>
+                                </Grid>
+                            </Border>
+                            <ContentPresenter Margin="2"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"
+                                RecognizesAccessKey="True" />
+                        </StackPanel>
+
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter TargetName="PART_Border" Property="BorderBrush">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientBrush.GradientStops>
+                                            <GradientStopCollection>
+                                                <GradientStop Color="#8F5277A8" Offset="0.0" />
+                                                <GradientStop Color="#EF5277A8" Offset="1.0" />
+                                            </GradientStopCollection>
+                                        </GradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter TargetName="PART_Border" Property="Background" Value="#6F5277A8"></Setter>
+                        </Trigger>
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter Property="Visibility" TargetName="PART_Path1" Value="Collapsed" />
+                            <Setter Property="Visibility" TargetName="PART_Path2" Value="Visible" />
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter TargetName="PART_Border" Property="Background" Value="#EF5277A8"></Setter>
+                            <Setter TargetName="PART_Border" Property="TextBlock.Foreground" Value="#EFEFEFEF"></Setter>
+                            <Setter TargetName="PART_Path1" Property="Fill" Value="#EFEFEFEF"></Setter>
+                            <Setter TargetName="PART_Path2" Property="Fill" Value="#EFEFEFEF"></Setter>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
     <Style TargetType="ToggleButton" x:Key="PageButtonStyle">
         <Setter Property="SnapsToDevicePixels" Value="true" />
         <Setter Property="OverridesDefaultStyle" Value="true" />
-        <Setter Property="FocusVisualStyle" Value="{StaticResource ButtonFocusVisual}" />
+        <Setter Property="FocusVisualStyle" Value="{StaticResource ControlFocusVisual}" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">

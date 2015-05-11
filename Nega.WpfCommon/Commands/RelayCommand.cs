@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
-namespace Nega.WpfCtrl
+namespace Nega.WpfCommon
 {
 
     /// <summary>

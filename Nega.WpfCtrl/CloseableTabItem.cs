@@ -6,6 +6,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 
+using Nega.WpfCommon;
+
 namespace Nega.WpfCtrl
 {
     public class CloseableTabItem : TabItem

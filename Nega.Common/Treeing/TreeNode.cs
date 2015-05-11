@@ -11,7 +11,7 @@ namespace Nega.Common
     /// 定义一类简单的树形结构的节点，具有唯一的或者无父子节点，以及0个或多个孩子节点。
     /// </summary>
     /// <typeparam name="T">节点的数据类型。</typeparam>
-    public class TreeNode<T>
+    public class TreeNode<T> : ITreeNode
     {
 
         /// <summary>
@@ -81,6 +81,17 @@ namespace Nega.Common
                 return children;
             }
             internal set { children = value; }
+        }
+
+
+        public ITreeNode ParentNode
+        {
+            get { return Parent; }
+        }
+
+        public IEnumerable<ITreeNode> ChildNodes
+        {
+            get { return Children; }
         }
 
     }

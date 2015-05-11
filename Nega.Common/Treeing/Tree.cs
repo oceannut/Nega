@@ -10,6 +10,8 @@ namespace Nega.Common
     public static class Tree<T>
     {
 
+        #region TreeNode
+
         public static TreeNode<T> Find(TreeNode<T> node,
             Func<TreeNode<T>, bool> action)
         {
@@ -81,7 +83,8 @@ namespace Nega.Common
             {
                 TreeNode<T> current = stack.Pop();
                 action(current);
-                if (current.Children != null && current.Children.Count > 0)
+                var children = current.Children;
+                if (children != null && children.Count > 0)
                 {
                     foreach (var item in current.Children)
                     {
@@ -126,7 +129,8 @@ namespace Nega.Common
                     stack.Clear();
                     return;
                 }
-                if (current.Children != null && current.Children.Count > 0)
+                var children = current.Children;
+                if (children != null && children.Count > 0)
                 {
                     foreach (var item in current.Children)
                     {
@@ -177,7 +181,8 @@ namespace Nega.Common
                 {
                     stack.Push(current);
                     visitedStack.Push(true);
-                    if (current.Children != null && current.Children.Count > 0)
+                    var children = current.Children;
+                    if (children != null && children.Count > 0)
                     {
                         foreach (var item in current.Children)
                         {
@@ -188,6 +193,184 @@ namespace Nega.Common
                 }
             }
         }
+
+        #endregion
+
+    }
+
+    public static class Tree
+    {
+
+        #region ITreeNode
+
+        public static ITreeNode Find(ITreeNode node,
+            Func<ITreeNode, bool> action)
+        {
+            ITreeNode found = null;
+            PreorderTraverse(node,
+                        (e) =>
+                        {
+                            if (action(e))
+                            {
+                                found = e;
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        });
+            return found;
+        }
+
+        public static ITreeNode Find(IEnumerable<ITreeNode> col,
+            Func<ITreeNode, bool> action)
+        {
+            ITreeNode found = null;
+            PreorderTraverse(col,
+                        (e) =>
+                        {
+                            if (action(e))
+                            {
+                                found = e;
+                                return true;
+                            }
+                            else
+                            {
+                                return false;
+                            }
+                        });
+            return found;
+        }
+
+        public static void PreorderTraverse(ITreeNode node,
+            Action<ITreeNode> action)
+        {
+            if (node == null)
+            {
+                throw new ArgumentNullException();
+            }
+            PreorderTraverse(new ITreeNode[] { node }, action);
+        }
+
+        public static void PreorderTraverse(IEnumerable<ITreeNode> col,
+            Action<ITreeNode> action)
+        {
+            if (col == null || action == null)
+            {
+                throw new ArgumentNullException();
+            }
+            Stack<ITreeNode> stack = new Stack<ITreeNode>();
+            foreach (var item in col)
+            {
+                stack.Push(item);
+            }
+            while (stack.Count > 0)
+            {
+                ITreeNode current = stack.Pop();
+                action(current);
+                var childNodes = current.ChildNodes;
+                if (childNodes != null && childNodes.Count() > 0)
+                {
+                    foreach (var item in childNodes)
+                    {
+                        stack.Push(item);
+                    }
+                }
+            }
+        }
+
+        public static void PreorderTraverse(ITreeNode node,
+            Func<ITreeNode, bool> action)
+        {
+            if (node == null)
+            {
+                throw new ArgumentNullException();
+            }
+            PreorderTraverse(new ITreeNode[] { node }, action);
+        }
+
+        public static void PreorderTraverse(IEnumerable<ITreeNode> col,
+            Func<ITreeNode, bool> action)
+        {
+            if (col == null || action == null)
+            {
+                throw new ArgumentException();
+            }
+            Stack<ITreeNode> stack = new Stack<ITreeNode>();
+            foreach (var item in col)
+            {
+                stack.Push(item);
+            }
+            while (stack.Count > 0)
+            {
+                ITreeNode current = stack.Pop();
+                if (action(current))
+                {
+                    stack.Clear();
+                    return;
+                }
+                var childNodes = current.ChildNodes;
+                if (childNodes != null && childNodes.Count() > 0)
+                {
+                    foreach (var item in childNodes)
+                    {
+                        stack.Push(item);
+                    }
+                }
+            }
+        }
+
+        public static void PostorderTraverse(ITreeNode node,
+            Action<ITreeNode> action)
+        {
+            if (node == null)
+            {
+                throw new ArgumentNullException();
+            }
+            PostorderTraverse(new ITreeNode[] { node }, action);
+        }
+
+        public static void PostorderTraverse(IEnumerable<ITreeNode> col,
+            Action<ITreeNode> action)
+        {
+            if (col == null || action == null)
+            {
+                throw new ArgumentException();
+            }
+            Stack<ITreeNode> stack = new Stack<ITreeNode>();
+            Stack<bool> visitedStack = new Stack<bool>();
+            foreach (var item in col)
+            {
+                stack.Push(item);
+                visitedStack.Push(false);
+            }
+            while (stack.Count > 0)
+            {
+                ITreeNode current = stack.Pop();
+                bool visited = visitedStack.Pop();
+                if (visited)
+                {
+                    action(current);
+                }
+                else
+                {
+                    stack.Push(current);
+                    visitedStack.Push(true);
+                    var childNodes = current.ChildNodes;
+                    if (childNodes != null && childNodes.Count() > 0)
+                    {
+                        foreach (var item in childNodes)
+                        {
+                            stack.Push(item);
+                            visitedStack.Push(false);
+                        }
+                    }
+                }
+            }
+        }
+
+        #endregion
 
     }
 

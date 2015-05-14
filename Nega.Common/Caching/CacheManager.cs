@@ -30,6 +30,13 @@ namespace Nega.Common
             }
         }
 
+        public CacheManager() { }
+
+        public CacheManager(ICacheFactory factory) 
+        {
+            this.Factory = factory;
+        }
+
         public ICache GetCache(string name)
         {
             ICache cache = null;

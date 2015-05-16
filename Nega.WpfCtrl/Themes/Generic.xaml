@@ -471,4 +471,24 @@
         </Setter>
     </Style>
 
+    <Style TargetType="{x:Type local:DragBox}">
+        <Setter Property="Control.Padding" Value="0" />
+        <Setter Property="Control.Background" Value="Transparent" />
+        <Setter Property="ContentControl.HorizontalContentAlignment" Value="Stretch" />
+        <Setter Property="ContentControl.VerticalContentAlignment" Value="Stretch" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type local:DragBox}">
+                    <Grid Background="{TemplateBinding Background}" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                        <ContentPresenter IsHitTestVisible="True" Content="{TemplateBinding ContentControl.Content}" 
+                                          HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}" 
+                                          Margin="{TemplateBinding Padding}" 
+                                          SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
 </ResourceDictionary>

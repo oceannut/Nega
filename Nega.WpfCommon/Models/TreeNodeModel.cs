@@ -13,14 +13,8 @@ namespace Nega.WpfCommon
     /// <summary>
     /// 树节点模型。
     /// </summary>
-    public class TreeNodeModel : BaseModel, ITreeNode
+    public class TreeNodeModel : ListNodeModel, ITreeNode
     {
-
-        #region events
-
-        public event Action<TreeNodeModel> SelectionChanged;
-
-        #endregion
 
         #region properties
 
@@ -47,50 +41,20 @@ namespace Nega.WpfCommon
         /// </summary>
         public ObservableCollection<TreeNodeModel> Children
         {
-            get { return children; }
+            get 
+            {
+                if (children == null)
+                {
+                    children = new ObservableCollection<TreeNodeModel>();
+                }
+                return children; 
+            }
             set 
             {
                 if (children != value)
                 {
                     children = value;
                     OnPropertyChanged("Children");
-                }
-            }
-        }
-
-        private bool isSelected;
-        /// <summary>
-        /// 
-        /// </summary>
-        public bool IsSelected
-        {
-            get { return isSelected; }
-            set 
-            {
-                if (isSelected != value)
-                {
-                    isSelected = value;
-                    OnPropertyChanged("IsSelected");
-
-                    if (SelectionChanged != null)
-                    {
-                        SelectionChanged(this);
-                    }
-                }
-            }
-        }
-
-        private string name;
-
-        public string Name
-        {
-            get { return name; }
-            set 
-            {
-                if (name != value)
-                {
-                    name = value;
-                    OnPropertyChanged("Name");
                 }
             }
         }
@@ -114,6 +78,38 @@ namespace Nega.WpfCommon
         #endregion
 
         #region methods
+
+        public void AddChild(TreeNodeModel child)
+        {
+            if (child == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (this.Children.Contains(child))
+            {
+                return;
+            }
+
+            this.Children.Add(child);
+            child.Parent = this;
+        }
+
+        public void RemoveChild(TreeNodeModel child)
+        {
+            if (child == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (!this.Children.Contains(child))
+            {
+                return;
+            }
+
+            if (this.Children.Remove(child))
+            {
+                child.Parent = null;
+            }
+        }
 
         public void SelectAll()
         {

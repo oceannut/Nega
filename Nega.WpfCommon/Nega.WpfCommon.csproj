@@ -68,6 +68,7 @@
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Converters\Bool2VisibilityConverter.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\ListNodeModel.cs" />
     <Compile Include="Models\TreeNodeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -82,6 +83,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utilities\TaskEx.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

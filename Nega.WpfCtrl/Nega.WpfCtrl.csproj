@@ -65,10 +65,11 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CloseableTabItem.cs" />
-    <Compile Include="PageIndexConverter.cs" />
-    <Compile Include="Pagination.cs" />
-    <Compile Include="PathButton.cs" />
+    <Compile Include="Controls\CloseableTabItem.cs" />
+    <Compile Include="Controls\DragBox.cs" />
+    <Compile Include="Converters\PageIndexConverter.cs" />
+    <Compile Include="Controls\Pagination.cs" />
+    <Compile Include="Controls\PathButton.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -104,6 +105,7 @@
       <Name>Nega.WpfCommon</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -22,7 +22,7 @@ namespace Nega.WpfCommon
         /// <summary>
         /// 
         /// </summary>
-        public TreeNodeModel Parent
+        public virtual TreeNodeModel Parent
         {
             get { return parent; }
             set 
@@ -35,7 +35,7 @@ namespace Nega.WpfCommon
             }
         }
 
-        private ObservableCollection<TreeNodeModel> children;
+        protected ObservableCollection<TreeNodeModel> children;
         /// <summary>
         /// 
         /// </summary>

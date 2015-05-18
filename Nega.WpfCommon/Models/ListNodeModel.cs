@@ -21,7 +21,7 @@ namespace Nega.WpfCommon
 
         #region properties
 
-        private bool isSelected;
+        protected bool isSelected;
         /// <summary>
         /// 
         /// </summary>
@@ -47,7 +47,7 @@ namespace Nega.WpfCommon
         /// <summary>
         /// 
         /// </summary>
-        public string Name
+        public virtual string Name
         {
             get { return name; }
             set

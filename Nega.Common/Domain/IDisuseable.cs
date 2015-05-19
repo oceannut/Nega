@@ -18,18 +18,6 @@ namespace Nega.Common
         /// </summary>
         bool Disused { get; }
 
-        /// <summary>
-        /// 放弃使用。
-        /// </summary>
-        /// <param name="action">操作定义。</param>
-        void Disuse(Action<T> action);
-
-        /// <summary>
-        /// 恢复使用。
-        /// </summary>
-        /// <param name="action">操作定义。</param>
-        void Use(Action<T> action);
-
     }
 
 }

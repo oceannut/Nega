@@ -22,7 +22,7 @@ namespace Nega.WpfCommon
         /// <summary>
         /// 
         /// </summary>
-        public virtual TreeNodeModel Parent
+        public TreeNodeModel Parent
         {
             get { return parent; }
             set 

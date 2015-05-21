@@ -15,9 +15,10 @@ namespace Nega.WpfCommon
 
         protected void OnPropertyChanged(string propertyName)
         {
-            if (PropertyChanged != null)
+            PropertyChangedEventHandler handler = this.PropertyChanged;
+            if (handler != null)
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+                handler(this, new PropertyChangedEventArgs(propertyName));
             }
         }
 

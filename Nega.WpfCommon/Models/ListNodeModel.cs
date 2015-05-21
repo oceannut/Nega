@@ -47,7 +47,7 @@ namespace Nega.WpfCommon
         /// <summary>
         /// 
         /// </summary>
-        public virtual string Name
+        public string Name
         {
             get { return name; }
             set

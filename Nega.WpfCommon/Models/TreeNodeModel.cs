@@ -94,6 +94,25 @@ namespace Nega.WpfCommon
             child.Parent = this;
         }
 
+        public void InsertChild(int index, TreeNodeModel child)
+        {
+            if (index < 0 || index > this.Children.Count)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if (child == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (this.Children.Contains(child))
+            {
+                return;
+            }
+
+            this.Children.Insert(index, child);
+            child.Parent = this;
+        }
+
         public void RemoveChild(TreeNodeModel child)
         {
             if (child == null)
@@ -105,6 +124,19 @@ namespace Nega.WpfCommon
                 return;
             }
 
+            if (this.Children.Remove(child))
+            {
+                child.Parent = null;
+            }
+        }
+
+        public void RemoveChildAt(int index)
+        {
+            if (index < 0 || index >= this.Children.Count)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            TreeNodeModel child = this.Children[index];
             if (this.Children.Remove(child))
             {
                 child.Parent = null;

@@ -64,6 +64,24 @@ namespace Nega.Common
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public TreeNode<T> this[int index]
+        {
+            get
+            {
+                if (index < 0 || index >= Count)
+                {
+                    throw new ArgumentOutOfRangeException();
+                }
+
+                return this.collection[index];
+            }
+        }
+
+        /// <summary>
         /// 节点的个数。
         /// </summary>
         public int Count
@@ -101,6 +119,40 @@ namespace Nega.Common
         }
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        /// <param name="node"></param>
+        public void Insert(int index, TreeNode<T> node)
+        {
+            if (index < 0 || index > Count)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            if (node == null)
+            {
+                throw new ArgumentNullException();
+            }
+            if (this.collection.Contains(node))
+            {
+                return;
+            }
+
+            if (NodeAdding != null)
+            {
+                NodeAdding();
+            }
+
+            this.collection.Insert(index, node);
+            node.Parent = this.owner;
+
+            if (NodeAdded != null)
+            {
+                NodeAdded(node);
+            }
+        }
+
+        /// <summary>
         /// 移除一个节点。
         /// </summary>
         /// <param name="node">节点。</param>
@@ -129,6 +181,46 @@ namespace Nega.Common
                     NodeRemoved();
                 }
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="index"></param>
+        public void RemoveAt(int index)
+        {
+            TreeNode<T> node = this[index];
+
+            if (NodeRemoving != null)
+            {
+                NodeRemoving(node);
+            }
+
+            if (this.collection.Remove(node))
+            {
+                node.Parent = null;
+
+                if (NodeRemoved != null)
+                {
+                    NodeRemoved();
+                }
+            }
+        }
+
+        /// <summary>
+        /// 清空。
+        /// </summary>
+        public void Clear()
+        {
+            foreach (TreeNode<T> node in this.collection)
+            {
+                node.Parent = null;
+                if (!node.IsLeaf)
+                {
+                    node.Children.Clear();
+                }
+            }
+            this.collection.Clear();
         }
 
         /// <summary>

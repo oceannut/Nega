@@ -13,16 +13,16 @@ namespace Nega.WpfCommon
     {
 
         public static void ExcuteOnUIThread(this Task task,
-            Action completion = null,
-            Action<Exception> error = null)
+            Action success = null,
+            Action<Exception> failure = null)
         {
-            ExcuteOnUIThread(task, Application.Current, completion, error);
+            ExcuteOnUIThread(task, Application.Current, success, failure);
         }
 
         public static void ExcuteOnUIThread(this Task task,
             DispatcherObject dispatcherObject,
-            Action completion = null,
-            Action<Exception> error = null)
+            Action success = null,
+            Action<Exception> failure = null)
         {
             if (task == null)
             {
@@ -40,16 +40,16 @@ namespace Nega.WpfCommon
                         {
                             if (e.Exception == null)
                             {
-                                if (completion != null)
+                                if (success != null)
                                 {
-                                    completion();
+                                    success();
                                 }
                             }
                             else
                             {
-                                if (error != null)
+                                if (failure != null)
                                 {
-                                    error(e.Exception);
+                                    failure(e.Exception);
                                 }
                             }
                         }));
@@ -57,16 +57,16 @@ namespace Nega.WpfCommon
         }
 
         public static void ExcuteOnUIThread<T>(this Task<T> task,
-            Action<T> completion = null,
-            Action<Exception> error = null)
+            Action<T> success = null,
+            Action<Exception> failure = null)
         {
-            ExcuteOnUIThread<T>(task,  Application.Current, completion, error);
+            ExcuteOnUIThread<T>(task, Application.Current, success, failure);
         }
 
         public static void ExcuteOnUIThread<T>(this Task<T> task,
             DispatcherObject dispatcherObject,
-            Action<T> completion = null, 
-            Action<Exception> error = null)
+            Action<T> success = null,
+            Action<Exception> failure = null)
         {
             if (task == null)
             {
@@ -80,16 +80,16 @@ namespace Nega.WpfCommon
                         {
                             if (e.Exception == null)
                             {
-                                if (completion != null)
+                                if (success != null)
                                 {
-                                    completion(e.Result);
+                                    success(e.Result);
                                 }
                             }
                             else
                             {
-                                if (error != null)
+                                if (failure != null)
                                 {
-                                    error(e.Exception);
+                                    failure(e.Exception);
                                 }
                             }
                         }));

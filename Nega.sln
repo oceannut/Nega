@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nega.WcfUnity", "Nega.WcfUnity\Nega.WcfUnity.csproj", "{7D13CDE7-115D-42A8-91E3-634ADFAE36B6}"
 EndProject
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests.Nega.Entlib", "Tests.Nega.Entlib\Tests.Nega.Entlib.csproj", "{0AAFAA2A-656C-4D16-9326-D79EF8AFE7C1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nega.Data", "Nega.Data\Nega.Data.csproj", "{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nega.WcfCommon", "Nega.WcfCommon\Nega.WcfCommon.csproj", "{82F25757-AFEB-4D3D-BF00-151D6560A028}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BB0C023A-5ED0-4A38-9C57-36BD2A1231C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82F25757-AFEB-4D3D-BF00-151D6560A028}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82F25757-AFEB-4D3D-BF00-151D6560A028}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82F25757-AFEB-4D3D-BF00-151D6560A028}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82F25757-AFEB-4D3D-BF00-151D6560A028}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

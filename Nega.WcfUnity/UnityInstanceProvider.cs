@@ -37,8 +37,16 @@ namespace Nega.WcfUnity
 
         public object GetInstance(InstanceContext instanceContext)
         {
-            return this.container.Resolve(
-              instanceContext.Host.Description.ServiceType);
+            try
+            {
+                object obj = this.container.Resolve(
+                  instanceContext.Host.Description.ServiceType);
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         public void ReleaseInstance(InstanceContext instanceContext,

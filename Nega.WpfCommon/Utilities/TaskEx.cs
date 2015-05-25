@@ -35,8 +35,8 @@ namespace Nega.WpfCommon
             task.ContinueWith(
                 (e) =>
                 {
-                    dispatcherObject.Dispatcher.BeginInvoke(
-                        new Action(() =>
+                    UIThreadHelper.BeginInvoke(dispatcherObject,
+                        () =>
                         {
                             if (e.Exception == null)
                             {
@@ -52,7 +52,7 @@ namespace Nega.WpfCommon
                                     failure(e.Exception);
                                 }
                             }
-                        }));
+                        });
                 });
         }
 
@@ -75,8 +75,8 @@ namespace Nega.WpfCommon
             task.ContinueWith(
                 (e) =>
                 {
-                    dispatcherObject.Dispatcher.BeginInvoke(
-                        new Action(() =>
+                    UIThreadHelper.BeginInvoke(dispatcherObject,
+                        () =>
                         {
                             if (e.Exception == null)
                             {
@@ -92,7 +92,7 @@ namespace Nega.WpfCommon
                                     failure(e.Exception);
                                 }
                             }
-                        }));
+                        });
                 });
         }
 

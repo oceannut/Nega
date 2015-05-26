@@ -14,7 +14,7 @@ namespace Nega.Data
             return 0;
         }
 
-        public virtual int Save(ICollection<T> col)
+        public virtual int Save(IEnumerable<T> col)
         {
             return 0;
         }
@@ -24,7 +24,7 @@ namespace Nega.Data
             return 0;
         }
 
-        public virtual int Update(ICollection<T> col)
+        public virtual int Update(IEnumerable<T> col)
         {
             return 0;
         }
@@ -34,7 +34,7 @@ namespace Nega.Data
             return 0;
         }
 
-        public virtual int Delete(ICollection<TId> col)
+        public virtual int Delete(IEnumerable<TId> col)
         {
             return 0;
         }
@@ -44,7 +44,7 @@ namespace Nega.Data
             return 0;
         }
 
-        public virtual int Delete(ICollection<T> col)
+        public virtual int Delete(IEnumerable<T> col)
         {
             return 0;
         }

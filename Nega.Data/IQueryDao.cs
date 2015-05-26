@@ -22,7 +22,7 @@ namespace Nega.Data
         /// </summary>
         /// <param name="values">输入的条件数组。</param>
         /// <returns>返回对象集。</returns>
-        IList<T> List(params object[] values);
+        IEnumerable<T> List(params object[] values);
 
     }
 

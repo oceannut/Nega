@@ -26,7 +26,7 @@ namespace Nega.Data
         /// </summary>
         /// <param name="col">对象信息集合。</param>
         /// <returns>返回成功保存的对象个数。</returns>
-        int Save(ICollection<T> col);
+        int Save(IEnumerable<T> col);
 
         /// <summary>
         /// 更新对象信息。
@@ -40,7 +40,7 @@ namespace Nega.Data
         /// </summary>
         /// <param name="col">对象信息集合。</param>
         /// <returns>返回成功更新的对象个数。</returns>
-        int Update(ICollection<T> col);
+        int Update(IEnumerable<T> col);
 
         /// <summary>
         /// 删除对象信息。
@@ -54,7 +54,7 @@ namespace Nega.Data
         /// </summary>
         /// <param name="col">对象信息标识集合。</param>
         /// <returns>返回成功删除的对象个数。</returns>
-        int Delete(ICollection<TId> col);
+        int Delete(IEnumerable<TId> col);
 
         /// <summary>
         /// 删除对象信息。
@@ -68,7 +68,7 @@ namespace Nega.Data
         /// </summary>
         /// <param name="col">对象信息集合。</param>
         /// <returns>返回成功删除的对象个数。</returns>
-        int Delete(ICollection<T> col);
+        int Delete(IEnumerable<T> col);
 
         /// <summary>
         /// 获取对象信息。

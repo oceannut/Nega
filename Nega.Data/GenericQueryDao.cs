@@ -14,7 +14,7 @@ namespace Nega.Data
             return 0;
         }
 
-        public virtual IList<T> List(params object[] values)
+        public virtual IEnumerable<T> List(params object[] values)
         {
             return new List<T>();
         }

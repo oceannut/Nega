@@ -14,7 +14,7 @@ namespace Nega.Data
 
         public int PageSize { get; set; }
 
-        public IList<Sortable> Sorts { get; set; }
+        public IEnumerable<Sortable> Sorts { get; set; }
 
         public bool NeedTotalCount { get; set; }
 

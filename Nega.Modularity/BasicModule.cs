@@ -7,47 +7,64 @@ using System.Threading.Tasks;
 namespace Nega.Modularity
 {
 
-    public class BasicModule : IModule
+    public abstract class BasicModule : IModule
     {
 
-        protected bool initialized;
-        public bool Initialized
+        private readonly object lockObj = new object();
+
+        private bool isInitialized;
+        public bool IsInitialized
         {
-            get { return initialized; }
+            get { return isInitialized; }
         }
 
-        protected string name;
-        public string Name
-        {
-            get { return name; }
-        }
+        public abstract string Name { get; }
 
-        public IModuleLicence Licence
+        public virtual IModuleLicence Licence
         {
             get { return Unlimited.Solo; }
         }
 
         public BasicModule() { }
 
-        public BasicModule(string name)
+        public void Initialize()
         {
-            this.name = name;
+            if (!this.isInitialized)
+            {
+                lock (lockObj)
+                {
+                    if (!this.isInitialized)
+                    {
+                        OnInitialize();
+                        this.isInitialized = true;
+                    }
+                }
+            }
         }
 
-        public virtual void Initialize()
+        public void Destroy()
         {
-            this.initialized = true;
+            if (this.isInitialized)
+            {
+                lock (lockObj)
+                {
+                    if (this.isInitialized)
+                    {
+                        this.isInitialized = false;
+                        OnDestroy();
+                    }
+                }
+            }
         }
 
-        public virtual void Destroy()
-        {
-            this.initialized = false;
-        }
-
-        public virtual void Dispose()
+        public void Dispose()
         {
             Destroy();
         }
+
+        protected abstract void OnInitialize();
+
+        protected abstract void OnDestroy();
 
     }
 }

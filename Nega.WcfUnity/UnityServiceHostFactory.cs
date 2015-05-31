@@ -27,6 +27,11 @@ namespace Nega.WcfUnity
             return new UnityServiceHost(this.container, serviceType, baseAddresses);
         }
 
+        public ServiceHost CreateServiceHost(Type serviceType)
+        {
+            return CreateServiceHost(serviceType, new Uri[0]);
+        }
+
     }
 
 }

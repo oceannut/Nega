@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Configuration;
 
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration;
 using Microsoft.Practices.EnterpriseLibrary.Common.Configuration.Design;
@@ -13,29 +12,29 @@ using Microsoft.Practices.Unity.InterceptionExtension;
 namespace Nega.Entlib
 {
 
-    [AddSateliteProviderCommand("transaction")]
-    public class TransactionCallHandlerData : CallHandlerData
+    [AddSateliteProviderCommand("authorization")]
+    public class AuthorizationCallHandlerData : CallHandlerData
     {
 
-        public TransactionCallHandlerData()
+        public AuthorizationCallHandlerData()
         {
-            Type = typeof(TransactionCallHandlerAttribute);
+            Type = typeof(AuthorizationCallHandlerAttribute);
         }
 
-        public TransactionCallHandlerData(string handlerName)
-            : base(handlerName, typeof(TransactionCallHandlerAttribute))
+        public AuthorizationCallHandlerData(string handlerName)
+            : base(handlerName, typeof(AuthorizationCallHandlerAttribute))
         {
         }
 
-        public TransactionCallHandlerData(string handlerName, int handlerOrder)
-            : base(handlerName, typeof(TransactionCallHandlerAttribute))
+        public AuthorizationCallHandlerData(string handlerName, int handlerOrder)
+            : base(handlerName, typeof(AuthorizationCallHandlerAttribute))
         {
             this.Order = handlerOrder;
         }
 
         protected override void DoConfigureContainer(IUnityContainer container, string registrationName)
         {
-            container.RegisterType<ICallHandler, TransactionCallHandler>(
+            container.RegisterType<ICallHandler, AuthorizationCallHandler>(
                 registrationName,
                 new InjectionConstructor(),
                 new InjectionProperty("Order", this.Order));

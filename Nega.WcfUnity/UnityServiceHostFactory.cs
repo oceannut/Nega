@@ -8,6 +8,8 @@ using System.ServiceModel.Activation;
 
 using Microsoft.Practices.Unity;
 
+using Nega.Common;
+
 namespace Nega.WcfUnity
 {
 
@@ -24,12 +26,14 @@ namespace Nega.WcfUnity
         protected override ServiceHost CreateServiceHost(Type serviceType,
             Uri[] baseAddresses)
         {
-            return new UnityServiceHost(this.container, serviceType, baseAddresses);
+            var host = new UnityServiceHost(this.container, serviceType, baseAddresses);
+            host.Authorization.ServiceAuthorizationManager = container.Resolve<ServiceAuthorizationManager>();
+            return host;
         }
 
         public ServiceHost CreateServiceHost(Type serviceType)
         {
-            return CreateServiceHost(serviceType, new Uri[0]);
+            return CreateServiceHost(serviceType, null);
         }
 
     }

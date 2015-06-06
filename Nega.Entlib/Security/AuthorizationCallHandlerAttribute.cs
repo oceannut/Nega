@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.Specialized;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,12 +11,12 @@ namespace Nega.Entlib
 {
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property)]
-    public class TransactionCallHandlerAttribute : HandlerAttribute
+    public class AuthorizationCallHandlerAttribute : HandlerAttribute
     {
 
         public override ICallHandler CreateHandler(IUnityContainer container)
         {
-            return new TransactionCallHandler();
+            return new AuthorizationCallHandler();
         }
 
     }

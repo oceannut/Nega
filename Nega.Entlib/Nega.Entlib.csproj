@@ -88,9 +88,9 @@
   <ItemGroup>
     <Compile Include="Logging\LoggerFactoryImpl.cs" />
     <Compile Include="Logging\LoggerImpl.cs" />
-    <Compile Include="Security\AuthorizationCallHandler.cs" />
-    <Compile Include="Security\AuthorizationCallHandlerAttribute.cs" />
-    <Compile Include="Security\AuthorizationCallHandlerData.cs" />
+    <Compile Include="Security\ResourceAuthorizationCallHandler.cs" />
+    <Compile Include="Security\ResourceAuthorizationCallHandlerAttribute.cs" />
+    <Compile Include="Security\ResourceAuthorizationCallHandlerData.cs" />
     <Compile Include="Transactions\TransactionCallHandlerAttribute.cs" />
     <Compile Include="Transactions\TransactionCallHandlerData.cs" />
     <Compile Include="Transactions\TransactionCallHandler.cs" />

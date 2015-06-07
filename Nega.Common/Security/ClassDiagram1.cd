@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Nega.Common.GenericPrincipalProvider" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="8.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\GenericPrincipalProvider.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Nega.Common.Resource" Collapsed="true">
+    <Position X="6" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAAAgAAAAQAAoAAYAAAAgAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Security\Resource.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nega.Common.ResourceAccess" Collapsed="true">
+    <Position X="6" Y="8.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIACAAAAEAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>Security\ResourceAccess.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nega.Common.ResourceAttribute" Collapsed="true">
+    <Position X="10.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\ResourceAttribute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Nega.Common.ResourcePermission" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQCAAAAABAAAAAAAAUAAAAAgAAAAAMACAAAQAAEAQ=</HashCode>
+      <FileName>Security\ResourcePermission.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="AccessList" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Nega.Common.ResourceRegistry" Collapsed="true">
+    <Position X="6" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAACAAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>Security\ResourceRegistry.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Resources" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Interface Name="Nega.Common.IAuthenticationProvider" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\IAuthenticationProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nega.Common.IPrincipalProvider" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\IPrincipalProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Nega.Common.Security.IResourceAuthorizationProvider" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>Security\IResourceAuthorizationProvider.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="Nega.Common.AuthenticationResult" Collapsed="true">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQoAACAAAAAAAAAAAAAAAAAgAAIAAAAAAA=</HashCode>
+      <FileName>Security\IAuthenticationProvider.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="Nega.Common.ResourceAccessMode" Collapsed="true">
+    <Position X="10.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Security\ResourceAccess.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

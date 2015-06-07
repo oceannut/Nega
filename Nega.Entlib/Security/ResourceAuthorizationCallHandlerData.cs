@@ -12,29 +12,29 @@ using Microsoft.Practices.Unity.InterceptionExtension;
 namespace Nega.Entlib
 {
 
-    [AddSateliteProviderCommand("authorization")]
-    public class AuthorizationCallHandlerData : CallHandlerData
+    [AddSateliteProviderCommand("resourceAuthorization")]
+    public class ResourceAuthorizationCallHandlerData : CallHandlerData
     {
 
-        public AuthorizationCallHandlerData()
+        public ResourceAuthorizationCallHandlerData()
         {
-            Type = typeof(AuthorizationCallHandlerAttribute);
+            Type = typeof(ResourceAuthorizationCallHandlerAttribute);
         }
 
-        public AuthorizationCallHandlerData(string handlerName)
-            : base(handlerName, typeof(AuthorizationCallHandlerAttribute))
+        public ResourceAuthorizationCallHandlerData(string handlerName)
+            : base(handlerName, typeof(ResourceAuthorizationCallHandlerAttribute))
         {
         }
 
-        public AuthorizationCallHandlerData(string handlerName, int handlerOrder)
-            : base(handlerName, typeof(AuthorizationCallHandlerAttribute))
+        public ResourceAuthorizationCallHandlerData(string handlerName, int handlerOrder)
+            : base(handlerName, typeof(ResourceAuthorizationCallHandlerAttribute))
         {
             this.Order = handlerOrder;
         }
 
         protected override void DoConfigureContainer(IUnityContainer container, string registrationName)
         {
-            container.RegisterType<ICallHandler, AuthorizationCallHandler>(
+            container.RegisterType<ICallHandler, ResourceAuthorizationCallHandler>(
                 registrationName,
                 new InjectionConstructor(),
                 new InjectionProperty("Order", this.Order));

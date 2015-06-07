@@ -11,12 +11,12 @@ namespace Nega.Entlib
 {
 
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method | AttributeTargets.Property)]
-    public class AuthorizationCallHandlerAttribute : HandlerAttribute
+    public class ResourceAuthorizationCallHandlerAttribute : HandlerAttribute
     {
 
         public override ICallHandler CreateHandler(IUnityContainer container)
         {
-            return new AuthorizationCallHandler();
+            return new ResourceAuthorizationCallHandler(container);
         }
 
     }

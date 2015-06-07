@@ -51,6 +51,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -79,9 +80,15 @@
     <Compile Include="Logging\ILoggerFactory.cs" />
     <Compile Include="Logging\LogManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\ResourceAccess.cs" />
     <Compile Include="Security\GenericPrincipalProvider.cs" />
     <Compile Include="Security\IAuthenticationProvider.cs" />
+    <Compile Include="Security\IResourceAuthorizationProvider.cs" />
     <Compile Include="Security\IPrincipalProvider.cs" />
+    <Compile Include="Security\Resource.cs" />
+    <Compile Include="Security\ResourceAttribute.cs" />
+    <Compile Include="Security\ResourcePermission.cs" />
+    <Compile Include="Security\ResourceRegistry.cs" />
     <Compile Include="Treeing\ITreeNode.cs" />
     <Compile Include="Treeing\Tree.cs" />
     <Compile Include="Treeing\TreeNode.cs" />
@@ -89,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Caching\ClassDiagram1.cd" />
+    <None Include="Security\ClassDiagram1.cd" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

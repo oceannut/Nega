@@ -29,7 +29,8 @@ namespace Nega.WcfUnity
             var auth = ctx.IncomingRequest.Headers[HttpRequestHeader.Authorization];
             if (string.IsNullOrEmpty(auth))
             {
-                ctx.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
+                allowed = true;
+                //ctx.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
             }
             else
             {

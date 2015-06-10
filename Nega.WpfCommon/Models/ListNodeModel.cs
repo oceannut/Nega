@@ -15,6 +15,9 @@ namespace Nega.WpfCommon
 
         #region events
 
+        /// <summary>
+        /// 当前节点选择变化引发的事件。
+        /// </summary>
         public event Action<ListNodeModel> SelectionChanged;
 
         #endregion
@@ -23,7 +26,7 @@ namespace Nega.WpfCommon
 
         protected bool isSelected;
         /// <summary>
-        /// 
+        /// 改变当前节点的选择，并触发选择事件。
         /// </summary>
         public bool IsSelected
         {
@@ -61,6 +64,19 @@ namespace Nega.WpfCommon
         }
 
         #endregion
+
+        /// <summary>
+        /// 改变当前节点的选择，但不触发选择事件。
+        /// </summary>
+        /// <param name="value"></param>
+        public void ChangeSelectionSilently(bool value)
+        {
+            if (isSelected != value)
+            {
+                isSelected = value;
+                OnPropertyChanged("IsSelected");
+            }
+        }
 
     }
 

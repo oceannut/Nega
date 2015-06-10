@@ -148,7 +148,7 @@ namespace Nega.WpfCommon
             Tree.PreorderTraverse(this,
                 (e) =>
                 {
-                    (e as TreeNodeModel).IsSelected = true;
+                    (e as TreeNodeModel).ChangeSelectionSilently(true);
                 });
         }
 
@@ -157,7 +157,7 @@ namespace Nega.WpfCommon
             Tree.PreorderTraverse(this,
                 (e) =>
                 {
-                    (e as TreeNodeModel).IsSelected = false;
+                    (e as TreeNodeModel).ChangeSelectionSilently(false);
                 });
         }
 
@@ -167,8 +167,24 @@ namespace Nega.WpfCommon
                 (e) =>
                 {
                     var node = (e as TreeNodeModel);
-                    node.IsSelected = !node.IsSelected;
+                    node.ChangeSelectionSilently(!node.IsSelected);
                 });
+        }
+
+        /// <summary>
+        /// 改变当前节点所有后继节点的选择，但不触发选择事件。
+        /// </summary>
+        /// <param name="value"></param>
+        public void ChangeSuccessorSelectionSilently(bool value)
+        {
+            if (children != null && children.Count > 0)
+            {
+                Tree.PreorderTraverse(children,
+                    (e) =>
+                    {
+                        (e as TreeNodeModel).ChangeSelectionSilently(value);
+                    });
+            }
         }
 
         #endregion

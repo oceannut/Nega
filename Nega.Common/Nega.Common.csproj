@@ -93,6 +93,7 @@
     <Compile Include="Treeing\Tree.cs" />
     <Compile Include="Treeing\TreeNode.cs" />
     <Compile Include="Treeing\TreeNodeCollection.cs" />
+    <Compile Include="Utilities\JsonStringBuilder.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Caching\ClassDiagram1.cd" />

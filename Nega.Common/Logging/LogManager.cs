@@ -23,9 +23,9 @@ namespace Nega.Common
             }
         }
 
-        public static ILogger GetLogger(Type type)
+        public static ILogger GetLogger()
         {
-            return factory.Create(type);
+            return factory.Create();
         }
 
     }

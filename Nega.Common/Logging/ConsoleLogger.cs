@@ -10,15 +10,6 @@ namespace Nega.Common
     public class ConsoleLogger : ILogger
     {
 
-        private Type type;
-
-        public ConsoleLogger() { }
-
-        public ConsoleLogger(Type type)
-        {
-            this.type = type;
-        }
-
         public void Debug(string log)
         {
             Write(ConsoleColor.White, log);
@@ -54,10 +45,6 @@ namespace Nega.Common
             Console.ForegroundColor = color;
             Console.WriteLine();
             Console.Write(DateTimeOffset.Now);
-            if (type != null)
-            {
-                Console.Write(string.Format(" - {0}", type.FullName));
-            }
             Console.WriteLine();
             Console.WriteLine("----------------------------------------------------------------");
             Console.Write(log);

@@ -10,35 +10,11 @@ namespace Nega.Common
     public class ConsoleLoggerFactory : ILoggerFactory
     {
 
-        private static readonly ConsoleLogger Default = new ConsoleLogger();
+        private static readonly ConsoleLogger _default = new ConsoleLogger();
 
-        private readonly Dictionary<Type, ILogger> dict;
-
-        public ConsoleLoggerFactory()
+        public ILogger Create()
         {
-            this.dict = new Dictionary<Type, ILogger>();
-        }
-
-        public ILogger Create(Type type)
-        {
-            if (type == null)
-            {
-                return Default;
-            }
-            else
-            {
-                ILogger logger = null;
-                lock (dict)
-                {
-                    dict.TryGetValue(type, out logger);
-                    if (logger == null)
-                    {
-                        logger = new ConsoleLogger(type);
-                        dict.Add(type, logger);
-                    }
-                }
-                return logger;
-            }
+            return _default;
         }
 
     }

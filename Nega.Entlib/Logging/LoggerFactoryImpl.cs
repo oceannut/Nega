@@ -13,23 +13,22 @@ namespace Nega.Entlib
     public class LoggerFactoryImpl : ILoggerFactory
     {
 
-        private readonly LogWriterFactory logWriterFactory;
-        private readonly string category;
+        private readonly LoggerImpl _default;
 
         public LoggerFactoryImpl()
         {
-            this.logWriterFactory = new LogWriterFactory();
+            this._default = new LoggerImpl(new LogWriterFactory().Create());
         }
 
         public LoggerFactoryImpl(string category)
             : this()
         {
-            this.category = category;
+            this._default = new LoggerImpl(new LogWriterFactory().Create(), category);
         }
 
-        public ILogger Create(Type type)
+        public ILogger Create()
         {
-            return new LoggerImpl(this.logWriterFactory.Create(), this.category);
+            return this._default;
         }
 
     }

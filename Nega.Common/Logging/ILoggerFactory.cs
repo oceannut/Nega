@@ -10,7 +10,7 @@ namespace Nega.Common
     public interface ILoggerFactory
     {
 
-        ILogger Create(Type type);
+        ILogger Create();
 
     }
 

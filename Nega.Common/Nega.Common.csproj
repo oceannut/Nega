@@ -59,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditing\AuditEntry.cs" />
+    <Compile Include="Auditing\GenericAuditor.cs" />
+    <Compile Include="Auditing\IAuditor.cs" />
+    <Compile Include="Auditing\IAuditorFactory.cs" />
+    <Compile Include="Auditing\AuditManager.cs" />
+    <Compile Include="Auditing\IAuditWriter.cs" />
     <Compile Include="Caching\CacheManager.cs" />
     <Compile Include="Caching\ICache.cs" />
     <Compile Include="Caching\ICacheFactory.cs" />
@@ -66,9 +72,11 @@
     <Compile Include="Caching\InMemoryCacheFactory.cs" />
     <Compile Include="Caching\PermanentCache.cs" />
     <Compile Include="Caching\PermanentCacheFactory.cs" />
+    <Compile Include="Domain\Enums.cs" />
     <Compile Include="Domain\ICategoryable.cs" />
     <Compile Include="Domain\IDisuseable.cs" />
     <Compile Include="Domain\ITimestampData.cs" />
+    <Compile Include="Domain\ResourceMethod.cs" />
     <Compile Include="Exceptions\BusinessException.cs" />
     <Compile Include="Exceptions\CyclicInheritanceException.cs" />
     <Compile Include="Exceptions\ObjectAlreadyExistedException.cs" />
@@ -80,15 +88,20 @@
     <Compile Include="Logging\ILoggerFactory.cs" />
     <Compile Include="Logging\LogManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Security\ResourceAccess.cs" />
     <Compile Include="Security\GenericPrincipalProvider.cs" />
     <Compile Include="Security\IAuthenticationProvider.cs" />
     <Compile Include="Security\IResourceAuthorizationProvider.cs" />
     <Compile Include="Security\IPrincipalProvider.cs" />
-    <Compile Include="Security\Resource.cs" />
-    <Compile Include="Security\ResourceAttribute.cs" />
+    <Compile Include="Domain\Resource.cs" />
+    <Compile Include="Domain\ResourceAttribute.cs" />
     <Compile Include="Security\ResourcePermission.cs" />
-    <Compile Include="Security\ResourceRegistry.cs" />
+    <Compile Include="Domain\ResourceRegistry.cs" />
     <Compile Include="Treeing\ITreeNode.cs" />
     <Compile Include="Treeing\Tree.cs" />
     <Compile Include="Treeing\TreeNode.cs" />
@@ -97,7 +110,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Caching\ClassDiagram1.cd" />
+    <None Include="Domain\ClassDiagram1.cd" />
     <None Include="Security\ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

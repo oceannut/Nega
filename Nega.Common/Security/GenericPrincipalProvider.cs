@@ -24,7 +24,7 @@ namespace Nega.Common
             get { return Thread.CurrentPrincipal; }
         }
 
-        public bool Authenticate(string username, string pwd)
+        public bool Authenticate(string client, string username, string pwd)
         {
             string[] roles = null;
             if (AuthenticationResult.Pass == this.authenticationProvider.Authenticate(username, pwd, out roles))

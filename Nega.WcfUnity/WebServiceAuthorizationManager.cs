@@ -9,6 +9,7 @@ using System.ServiceModel.Web;
 using Microsoft.Practices.Unity;
 
 using Nega.Common;
+using System.ServiceModel.Channels;
 
 namespace Nega.WcfUnity
 {
@@ -36,7 +37,12 @@ namespace Nega.WcfUnity
             {
                 IPrincipalProvider principalProvider = container.Resolve<IPrincipalProvider>();
                 string username = auth;
-                if (!principalProvider.Authenticate(username, username))
+
+                MessageProperties messageProperties = operationContext.IncomingMessageProperties;
+                RemoteEndpointMessageProperty endpointProperty 
+                    = messageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
+
+                if (!principalProvider.Authenticate(endpointProperty.Address, username, username))
                 {
                     ctx.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
                 }

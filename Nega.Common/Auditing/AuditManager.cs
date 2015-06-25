@@ -7,13 +7,17 @@ using System.Threading.Tasks;
 namespace Nega.Common
 {
 
-    public static class LogManager
+    public static class AuditManager
     {
 
-        private static ILogger defaultLogger;
+        public const int minPriority = 1;
+        public const int maxPriority = 10;
+        public const int defaultPriority = 5;
 
-        private static ILoggerFactory factory;
-        public static ILoggerFactory Factory
+        private static IAuditor defaultAuditor;
+
+        private static IAuditorFactory factory;
+        public static IAuditorFactory Factory
         {
             set
             {
@@ -22,20 +26,15 @@ namespace Nega.Common
                     throw new ArgumentNullException();
                 }
                 factory = value;
-                defaultLogger = factory.Create();
+                defaultAuditor = factory.Create();
             }
         }
 
-        static LogManager()
-        {
-            Factory = new ConsoleLoggerFactory();
-        }
-
-        public static ILogger GetLogger(bool? singleton = true)
+        public static IAuditor GetAuditor(bool? singleton = true)
         {
             if (singleton.HasValue && singleton.Value)
             {
-                return defaultLogger;
+                return defaultAuditor;
             }
             else
             {

@@ -13,7 +13,7 @@ namespace Nega.Common
 
         IPrincipal Principal { get; }
 
-        bool Authenticate(string username, string pwd);
+        bool Authenticate(string client, string username, string pwd);
 
     }
 

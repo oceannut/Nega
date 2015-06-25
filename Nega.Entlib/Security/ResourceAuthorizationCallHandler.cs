@@ -87,34 +87,34 @@ namespace Nega.Entlib
             {
                 name = input.MethodBase.DeclaringType.Name;
             }
-            if (string.IsNullOrWhiteSpace(method))
-            {
-                string methodName = input.MethodBase.Name.ToLower();
-                if (methodName.StartsWith(Resource.METHOD_SAVE))
-                {
-                    method = Resource.METHOD_SAVE;
-                }
-                else if (methodName.StartsWith(Resource.METHOD_UPDATE))
-                {
-                    method = Resource.METHOD_UPDATE;
-                }
-                else if (methodName.StartsWith(Resource.METHOD_GET))
-                {
-                    method = Resource.METHOD_GET;
-                }
-                else if (methodName.StartsWith(Resource.METHOD_DELETE))
-                {
-                    method = Resource.METHOD_DELETE;
-                }
-                else if (methodName.StartsWith(Resource.METHOD_LIST))
-                {
-                    method = Resource.METHOD_LIST;
-                }
-                else
-                {
-                    return;
-                }
-            }
+            //if (string.IsNullOrWhiteSpace(method))
+            //{
+            //    string methodName = input.MethodBase.Name.ToLower();
+            //    if (methodName.StartsWith(Resource.METHOD_SAVE))
+            //    {
+            //        method = Resource.METHOD_SAVE;
+            //    }
+            //    else if (methodName.StartsWith(Resource.METHOD_UPDATE))
+            //    {
+            //        method = Resource.METHOD_UPDATE;
+            //    }
+            //    else if (methodName.StartsWith(Resource.METHOD_GET))
+            //    {
+            //        method = Resource.METHOD_GET;
+            //    }
+            //    else if (methodName.StartsWith(Resource.METHOD_DELETE))
+            //    {
+            //        method = Resource.METHOD_DELETE;
+            //    }
+            //    else if (methodName.StartsWith(Resource.METHOD_LIST))
+            //    {
+            //        method = Resource.METHOD_LIST;
+            //    }
+            //    else
+            //    {
+            //        return;
+            //    }
+            //}
 
             IEnumerable<ResourceAccess> accessList = resourceAuthorizationProvider.ListResourceAccess(name, method);
             ResourcePermission permission = new ResourcePermission(principalProvider.Principal, accessList);

@@ -14,6 +14,7 @@ namespace Nega.Common
         PwdRequired,
         UsernameBadFormat,
         PwdBadFormat,
+        NotExisted,
         Mismatch
     }
 

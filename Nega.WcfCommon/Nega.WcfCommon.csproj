@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,8 +42,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="JsonHelper.cs" />
+    <Compile Include="ConnectionClient.cs" />
+    <Compile Include="IClientFinder.cs" />
+    <Compile Include="IClientManager.cs" />
+    <Compile Include="Utilities\OperationContextHelper.cs" />
+    <Compile Include="Client.cs" />
+    <Compile Include="Utilities\WebOperationContextHelper.cs" />
+    <Compile Include="Web\WebClientManager.cs" />
+    <Compile Include="Utilities\JsonHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nega.Common\Nega.Common.csproj">
+      <Project>{671f50a2-0a0b-44b5-85a7-4212eb3ef1f3}</Project>
+      <Name>Nega.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nega.Modularity\Nega.Modularity.csproj">
+      <Project>{6f85c233-dfda-416e-9a84-31163fd5ab5e}</Project>
+      <Name>Nega.Modularity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

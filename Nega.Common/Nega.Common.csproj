@@ -62,7 +62,6 @@
     <Compile Include="Auditing\AuditEntry.cs" />
     <Compile Include="Auditing\GenericAuditor.cs" />
     <Compile Include="Auditing\IAuditor.cs" />
-    <Compile Include="Auditing\IAuditorFactory.cs" />
     <Compile Include="Auditing\AuditManager.cs" />
     <Compile Include="Auditing\IAuditWriter.cs" />
     <Compile Include="Caching\CacheManager.cs" />
@@ -93,6 +92,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="Security\ClientPrincipal.cs" />
+    <Compile Include="Security\GenericCredentialsProvider.cs" />
+    <Compile Include="Security\ICredentialsProvider.cs" />
     <Compile Include="Security\ResourceAccess.cs" />
     <Compile Include="Security\GenericPrincipalProvider.cs" />
     <Compile Include="Security\IAuthenticationProvider.cs" />
@@ -106,6 +108,7 @@
     <Compile Include="Treeing\Tree.cs" />
     <Compile Include="Treeing\TreeNode.cs" />
     <Compile Include="Treeing\TreeNodeCollection.cs" />
+    <Compile Include="Utilities\Collections.cs" />
     <Compile Include="Utilities\JsonStringBuilder.cs" />
   </ItemGroup>
   <ItemGroup>

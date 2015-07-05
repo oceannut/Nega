@@ -19,6 +19,11 @@ namespace Nega.Common
             this.authenticationProvider = authenticationProvider;
         }
 
+        public string Identity
+        {
+            get { throw new NotImplementedException(); }
+        }
+
         public IPrincipal Principal
         {
             get { return Thread.CurrentPrincipal; }

@@ -14,31 +14,24 @@ namespace Nega.Common
         public const int maxPriority = 10;
         public const int defaultPriority = 5;
 
-        private static IAuditor defaultAuditor;
-
-        private static IAuditorFactory factory;
-        public static IAuditorFactory Factory
+        private static IAuditor auditor;
+        public static IAuditor Auditor
         {
+            get
+            {
+                if (auditor == null)
+                {
+                    throw new InvalidOperationException();
+                }
+                return auditor;
+            }
             set
             {
                 if (value == null)
                 {
                     throw new ArgumentNullException();
                 }
-                factory = value;
-                defaultAuditor = factory.Create();
-            }
-        }
-
-        public static IAuditor GetAuditor(bool? singleton = true)
-        {
-            if (singleton.HasValue && singleton.Value)
-            {
-                return defaultAuditor;
-            }
-            else
-            {
-                return factory.Create();
+                auditor = value;
             }
         }
 

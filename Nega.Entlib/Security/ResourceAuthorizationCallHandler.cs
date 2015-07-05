@@ -117,8 +117,8 @@ namespace Nega.Entlib
             //}
 
             IEnumerable<ResourceAccess> accessList = resourceAuthorizationProvider.ListResourceAccess(name, method);
-            ResourcePermission permission = new ResourcePermission(principalProvider.Principal, accessList);
-            permission.Demand();
+            ResourcePermission permission = null;// new ResourcePermission(this.principalProvider.Principal, accessList);
+            //permission.Demand();
 
         }
 

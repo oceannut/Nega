@@ -76,6 +76,7 @@
   <ItemGroup>
     <Compile Include="ObjectsRegistry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SecureUnityServiceHostFactory.cs" />
     <Compile Include="WebServiceAuthorizationManager.cs" />
     <Compile Include="UnityInstanceProvider.cs" />
     <Compile Include="UnityServiceHost.cs" />
@@ -88,6 +89,10 @@
     <ProjectReference Include="..\Nega.Common\Nega.Common.csproj">
       <Project>{671f50a2-0a0b-44b5-85a7-4212eb3ef1f3}</Project>
       <Name>Nega.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nega.WcfCommon\Nega.WcfCommon.csproj">
+      <Project>{82f25757-afeb-4d3d-bf00-151d6560a028}</Project>
+      <Name>Nega.WcfCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

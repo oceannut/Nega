@@ -16,7 +16,7 @@ namespace Nega.WcfUnity
     public class UnityServiceHostFactory : ServiceHostFactory
     {
 
-        private readonly IUnityContainer container;
+        protected readonly IUnityContainer container;
 
         public UnityServiceHostFactory()
         {
@@ -26,9 +26,7 @@ namespace Nega.WcfUnity
         protected override ServiceHost CreateServiceHost(Type serviceType,
             Uri[] baseAddresses)
         {
-            var host = new UnityServiceHost(this.container, serviceType, baseAddresses);
-            host.Authorization.ServiceAuthorizationManager = container.Resolve<ServiceAuthorizationManager>();
-            return host;
+            return new UnityServiceHost(this.container, serviceType, baseAddresses);
         }
 
         public ServiceHost CreateServiceHost(Type serviceType)

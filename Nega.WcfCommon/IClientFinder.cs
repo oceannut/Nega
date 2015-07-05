@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Nega.Common
+namespace Nega.WcfCommon
 {
 
-    public interface IAuditorFactory
+    public interface IClientFinder
     {
 
-        IAuditor Create();
+        Client OperationClient { get; }
 
     }
 

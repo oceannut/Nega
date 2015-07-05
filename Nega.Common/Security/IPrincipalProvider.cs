@@ -11,7 +11,7 @@ namespace Nega.Common
     public interface IPrincipalProvider
     {
 
-        IPrincipal Principal { get; }
+        string Identity { get; }
 
         bool Authenticate(string client, string username, string pwd);
 

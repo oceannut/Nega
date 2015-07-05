@@ -10,6 +10,7 @@ using Microsoft.Practices.Unity;
 
 using Nega.Common;
 using System.ServiceModel.Channels;
+using Nega.WcfCommon;
 
 namespace Nega.WcfUnity
 {
@@ -27,29 +28,26 @@ namespace Nega.WcfUnity
         {
             bool allowed = false;
             var ctx = WebOperationContext.Current;
-            var auth = ctx.IncomingRequest.Headers[HttpRequestHeader.Authorization];
-            if (string.IsNullOrEmpty(auth))
+            var token = ctx.IncomingRequest.Headers[HttpRequestHeader.Authorization];
+            if (string.IsNullOrEmpty(token))
             {
                 allowed = true;
                 //ctx.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
             }
             else
             {
-                IPrincipalProvider principalProvider = container.Resolve<IPrincipalProvider>();
-                string username = auth;
+                allowed = true;
+                //IPrincipalProvider principalProvider = container.Resolve<IPrincipalProvider>();
+                //string username = auth;
 
-                MessageProperties messageProperties = operationContext.IncomingMessageProperties;
-                RemoteEndpointMessageProperty endpointProperty 
-                    = messageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
-
-                if (!principalProvider.Authenticate(endpointProperty.Address, username, username))
-                {
-                    ctx.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
-                }
-                else
-                {
-                    allowed = true;
-                }
+                //if (!principalProvider.Authenticate(OperationContextHelper.GetIP(operationContext), username, username))
+                //{
+                //    ctx.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
+                //}
+                //else
+                //{
+                //    allowed = true;
+                //}
             }
 
             return allowed;  

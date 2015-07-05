@@ -83,6 +83,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Utilities\MessageBoxHelper.cs" />
+    <Compile Include="Utilities\PasswordBoxHelper.cs" />
     <Compile Include="Utilities\TaskEx.cs" />
     <Compile Include="Utilities\UIThreadHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -95,9 +97,7 @@
     </None>
     <AppDesigner Include="Properties\" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Nega.Common\Nega.Common.csproj">
       <Project>{671f50a2-0a0b-44b5-85a7-4212eb3ef1f3}</Project>

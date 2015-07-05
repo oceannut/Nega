@@ -20,6 +20,31 @@ namespace Nega.Common
             this.auditWriter = auditWriter;
         }
 
+        public void Audit(string resourceName, int resourceMethod, string content, Func<DateTime> timestampFactory = null)
+        {
+            Audit(
+                new Resource
+                {
+                    Name = resourceName,
+                    Method = resourceMethod
+                }, 
+                content, 
+                timestampFactory);
+        }
+
+        public void Audit(string resourceName, int resourceMethod, string content, int priority, Func<DateTime> timestampFactory = null)
+        {
+            Audit(
+                new Resource
+                {
+                    Name = resourceName,
+                    Method = resourceMethod
+                },
+                content,
+                priority,
+                timestampFactory);
+        }
+
         public void Audit(Resource resource, string content, Func<DateTime> timestampFactory = null)
         {
             Audit(resource, content, AuditManager.defaultPriority, timestampFactory);
@@ -57,11 +82,12 @@ namespace Nega.Common
 
             if (string.IsNullOrWhiteSpace(entry.User))
             {
-                IPrincipal principal = principalProvider.Principal;
+                ClientPrincipal principal = null;// principalProvider.Principal as ClientPrincipal;
                 if (principal != null)
                 {
                     entry.User = principal.Identity.Name;
                     entry.UserCategory = ThreadUserCategory.User;
+                    entry.Client = principal.Client;
                 }
                 else
                 {
@@ -78,7 +104,7 @@ namespace Nega.Common
                 entry.Creation = DateTime.Now;
             }
 
-
+            this.auditWriter.Write(entry);
         }
 
     }

@@ -16,6 +16,8 @@ namespace Nega.WcfCommon
 
         Client GetClient(string username);
 
+        Client GetClientByUserToken(string userToken);
+
     }
 
 }

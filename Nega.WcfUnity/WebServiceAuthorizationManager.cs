@@ -27,27 +27,23 @@ namespace Nega.WcfUnity
         protected override bool CheckAccessCore(OperationContext operationContext)
         {
             bool allowed = false;
-            var ctx = WebOperationContext.Current;
-            var token = ctx.IncomingRequest.Headers[HttpRequestHeader.Authorization];
+            var token = WebOperationContextHelper.GetUserToken();
             if (string.IsNullOrEmpty(token))
             {
-                allowed = true;
-                //ctx.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
+                WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
             }
             else
             {
-                allowed = true;
-                //IPrincipalProvider principalProvider = container.Resolve<IPrincipalProvider>();
-                //string username = auth;
-
-                //if (!principalProvider.Authenticate(OperationContextHelper.GetIP(operationContext), username, username))
-                //{
-                //    ctx.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
-                //}
-                //else
-                //{
-                //    allowed = true;
-                //}
+                IClientManager clientManager = container.Resolve<IClientManager>();
+                Client client = clientManager.GetClientByUserToken(token);
+                if (client != null)
+                {
+                    allowed = true;
+                }
+                else
+                {
+                    WebOperationContext.Current.OutgoingResponse.StatusCode = HttpStatusCode.MethodNotAllowed;
+                }
             }
 
             return allowed;  

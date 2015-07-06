@@ -82,7 +82,7 @@ namespace Nega.Common
 
             if (string.IsNullOrWhiteSpace(entry.User))
             {
-                ClientPrincipal principal = null;// principalProvider.Principal as ClientPrincipal;
+                ClientPrincipal principal = null;//principalProvider.Principal as ClientPrincipal;
                 if (principal != null)
                 {
                     entry.User = principal.Identity.Name;

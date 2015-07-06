@@ -21,7 +21,7 @@ namespace Nega.WcfCommon
                 context = OperationContext.Current;
             }
 
-            MessageProperties messageProperties = operationContext.IncomingMessageProperties;
+            MessageProperties messageProperties = context.IncomingMessageProperties;
             RemoteEndpointMessageProperty endpointProperty
                 = messageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
 
@@ -36,7 +36,7 @@ namespace Nega.WcfCommon
                 context = OperationContext.Current;
             }
 
-            MessageProperties messageProperties = operationContext.IncomingMessageProperties;
+            MessageProperties messageProperties = context.IncomingMessageProperties;
             RemoteEndpointMessageProperty endpointProperty
                 = messageProperties[RemoteEndpointMessageProperty.Name] as RemoteEndpointMessageProperty;
 

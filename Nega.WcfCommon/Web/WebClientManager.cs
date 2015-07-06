@@ -31,18 +31,7 @@ namespace Nega.WcfCommon
         {
             get
             {
-                var userToken = GetUserToken();
-                Client found = null;
-                foreach (var client in Clients)
-                {
-                    if (client.UserToken == userToken)
-                    {
-                        found = client;
-                        break;
-                    }
-                }
-
-                return found;
+                return GetClientByUserToken(GetUserToken());
             }
         }
 
@@ -110,6 +99,19 @@ namespace Nega.WcfCommon
             foreach (var client in Clients)
             {
                 if (client.Username == username)
+                {
+                    return client;
+                }
+            }
+
+            return null;
+        }
+
+        public Client GetClientByUserToken(string userToken)
+        {
+            foreach (var client in Clients)
+            {
+                if (client.UserToken == userToken)
                 {
                     return client;
                 }

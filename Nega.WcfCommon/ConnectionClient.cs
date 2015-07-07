@@ -5,6 +5,8 @@ using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
+using Nega.Common;
+
 namespace Nega.WcfCommon
 {
 

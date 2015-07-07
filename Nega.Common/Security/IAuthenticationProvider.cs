@@ -24,7 +24,7 @@ namespace Nega.Common
 
         AuthenticationResult Authenticate(string username, string pwd);
 
-        AuthenticationResult Authenticate(string username, string pwd, out string[] roles);
+        string[] ListRoles(string username);
 
     }
 

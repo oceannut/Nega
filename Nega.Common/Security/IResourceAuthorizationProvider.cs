@@ -10,7 +10,7 @@ namespace Nega.Common
     public interface IResourceAuthorizationProvider
     {
 
-        IEnumerable<ResourceAccess> ListResourceAccess(string name, string method);
+        IEnumerable<ResourceAccess> ListResourceAccesses(string name, int method);
 
     }
 

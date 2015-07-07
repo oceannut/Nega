@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
-using Microsoft.Practices.Unity.InterceptionExtension;
-
 using Microsoft.Practices.Unity;
+using Microsoft.Practices.Unity.InterceptionExtension;
 
 using Nega.Common;
 
@@ -16,7 +17,8 @@ namespace Nega.Entlib
     public class ResourceAuthorizationCallHandler : ICallHandler
     {
 
-        private readonly IPrincipalProvider principalProvider;
+        private readonly IClientFinder clientFinder;
+        private readonly IAuthenticationProvider authenticationProvider;
         private readonly IResourceAuthorizationProvider resourceAuthorizationProvider;
 
         public ResourceAuthorizationCallHandler(IUnityContainer container)
@@ -26,7 +28,8 @@ namespace Nega.Entlib
                 throw new ArgumentNullException();
             }
 
-            this.principalProvider = container.Resolve<IPrincipalProvider>();
+            this.clientFinder = container.Resolve<IClientFinder>();
+            this.authenticationProvider = container.Resolve<IAuthenticationProvider>();
             this.resourceAuthorizationProvider = container.Resolve<IResourceAuthorizationProvider>();
         }
 
@@ -70,8 +73,14 @@ namespace Nega.Entlib
 
         private void Check(ResourceAttribute resourceAttribute, IMethodInvocation input)
         {
+            Client client = this.clientFinder.OperationClient;
+            if (client == null)
+            {
+                throw new SecurityException();
+            }
+
             string name = null;
-            string method = null;
+            int method = 0;
             bool checkAccess = true;
             if (resourceAttribute != null)
             {
@@ -87,38 +96,44 @@ namespace Nega.Entlib
             {
                 name = input.MethodBase.DeclaringType.Name;
             }
-            //if (string.IsNullOrWhiteSpace(method))
-            //{
-            //    string methodName = input.MethodBase.Name.ToLower();
-            //    if (methodName.StartsWith(Resource.METHOD_SAVE))
-            //    {
-            //        method = Resource.METHOD_SAVE;
-            //    }
-            //    else if (methodName.StartsWith(Resource.METHOD_UPDATE))
-            //    {
-            //        method = Resource.METHOD_UPDATE;
-            //    }
-            //    else if (methodName.StartsWith(Resource.METHOD_GET))
-            //    {
-            //        method = Resource.METHOD_GET;
-            //    }
-            //    else if (methodName.StartsWith(Resource.METHOD_DELETE))
-            //    {
-            //        method = Resource.METHOD_DELETE;
-            //    }
-            //    else if (methodName.StartsWith(Resource.METHOD_LIST))
-            //    {
-            //        method = Resource.METHOD_LIST;
-            //    }
-            //    else
-            //    {
-            //        return;
-            //    }
-            //}
+            if (method < 1)
+            {
+                string methodName = input.MethodBase.Name.ToLower();
+                if (methodName.StartsWith("save"))
+                {
+                    method = ResourceMethod.CREATE;
+                }
+                else if (methodName.StartsWith("update"))
+                {
+                    method = ResourceMethod.UPDATE;
+                }
+                else if (methodName.StartsWith("get") || methodName.StartsWith("retrieve"))
+                {
+                    method = ResourceMethod.RETRIEVE;
+                }
+                else if (methodName.StartsWith("delete"))
+                {
+                    method = ResourceMethod.DELETE;
+                }
+                else if (methodName.StartsWith("count"))
+                {
+                    method = ResourceMethod.COUNT;
+                }
+                else if (methodName.StartsWith("list"))
+                {
+                    method = ResourceMethod.LIST;
+                }
+                else
+                {
+                    return;
+                }
+            }
 
-            IEnumerable<ResourceAccess> accessList = resourceAuthorizationProvider.ListResourceAccess(name, method);
-            ResourcePermission permission = null;// new ResourcePermission(this.principalProvider.Principal, accessList);
-            //permission.Demand();
+            string[] roles = this.authenticationProvider.ListRoles(client.Username);
+            GenericPrincipal principal = new GenericPrincipal(new GenericIdentity(client.Username), roles);
+            IEnumerable<ResourceAccess> accessList = this.resourceAuthorizationProvider.ListResourceAccesses(name, method);
+            ResourcePermission permission = new ResourcePermission(principal, accessList);
+            permission.Demand();
 
         }
 

@@ -17,7 +17,7 @@ namespace Nega.Common
         public string Name { get; set; }
 
         [DataMember]
-        public string Method { get; set; }
+        public int Method { get; set; }
 
         [DataMember]
         public bool CheckAccess { get; set; }
@@ -42,12 +42,12 @@ namespace Nega.Common
             this.Name = name;
         }
 
-        public ResourceAttribute(string name, string method)
+        public ResourceAttribute(string name, int method)
             : this(true)
         {
-            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(method))
+            if (string.IsNullOrWhiteSpace(name) || method < 1)
             {
-                throw new ArgumentNullException();
+                throw new ArgumentException();
             }
 
             this.Name = name;

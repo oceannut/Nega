@@ -11,12 +11,12 @@ namespace Nega.Common
     public class GenericAuditor : IAuditor
     {
 
-        private readonly IPrincipalProvider principalProvider;
+        private readonly IClientFinder clientFinder;
         private readonly IAuditWriter auditWriter;
 
-        public GenericAuditor(IPrincipalProvider principalProvider, IAuditWriter auditWriter)
+        public GenericAuditor(IClientFinder clientFinder, IAuditWriter auditWriter)
         {
-            this.principalProvider = principalProvider;
+            this.clientFinder = clientFinder;
             this.auditWriter = auditWriter;
         }
 
@@ -82,12 +82,12 @@ namespace Nega.Common
 
             if (string.IsNullOrWhiteSpace(entry.User))
             {
-                ClientPrincipal principal = null;//principalProvider.Principal as ClientPrincipal;
-                if (principal != null)
+                Client client = this.clientFinder.OperationClient;
+                if (client != null)
                 {
-                    entry.User = principal.Identity.Name;
+                    entry.User = client.Username;
                     entry.UserCategory = ThreadUserCategory.User;
-                    entry.Client = principal.Client;
+                    entry.Client = client.IP;
                 }
                 else
                 {

@@ -43,10 +43,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConnectionClient.cs" />
-    <Compile Include="IClientFinder.cs" />
     <Compile Include="IClientManager.cs" />
     <Compile Include="Utilities\OperationContextHelper.cs" />
-    <Compile Include="Client.cs" />
     <Compile Include="Utilities\WebOperationContextHelper.cs" />
     <Compile Include="Web\WebClientManager.cs" />
     <Compile Include="Utilities\JsonHelper.cs" />

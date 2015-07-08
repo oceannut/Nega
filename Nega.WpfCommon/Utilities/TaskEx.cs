@@ -14,7 +14,7 @@ namespace Nega.WpfCommon
 
         public static void ExcuteOnUIThread(this Task task,
             Action success = null,
-            Action<Exception> failure = null)
+            Action<AggregateException> failure = null)
         {
             ExcuteOnUIThread(task, Application.Current, success, failure);
         }
@@ -22,7 +22,7 @@ namespace Nega.WpfCommon
         public static void ExcuteOnUIThread(this Task task,
             DispatcherObject dispatcherObject,
             Action success = null,
-            Action<Exception> failure = null)
+            Action<AggregateException> failure = null)
         {
             if (task == null)
             {
@@ -58,7 +58,7 @@ namespace Nega.WpfCommon
 
         public static void ExcuteOnUIThread<T>(this Task<T> task,
             Action<T> success = null,
-            Action<Exception> failure = null)
+            Action<AggregateException> failure = null)
         {
             ExcuteOnUIThread<T>(task, Application.Current, success, failure);
         }
@@ -66,7 +66,7 @@ namespace Nega.WpfCommon
         public static void ExcuteOnUIThread<T>(this Task<T> task,
             DispatcherObject dispatcherObject,
             Action<T> success = null,
-            Action<Exception> failure = null)
+            Action<AggregateException> failure = null)
         {
             if (task == null)
             {

@@ -18,7 +18,6 @@ namespace Nega.Entlib
     {
 
         private readonly IClientFinder clientFinder;
-        private readonly IAuthenticationProvider authenticationProvider;
         private readonly IResourceAuthorizationProvider resourceAuthorizationProvider;
 
         public ResourceAuthorizationCallHandler(IUnityContainer container)
@@ -29,7 +28,6 @@ namespace Nega.Entlib
             }
 
             this.clientFinder = container.Resolve<IClientFinder>();
-            this.authenticationProvider = container.Resolve<IAuthenticationProvider>();
             this.resourceAuthorizationProvider = container.Resolve<IResourceAuthorizationProvider>();
         }
 
@@ -129,11 +127,10 @@ namespace Nega.Entlib
                 }
             }
 
-            string[] roles = this.authenticationProvider.ListRoles(client.Username);
-            GenericPrincipal principal = new GenericPrincipal(new GenericIdentity(client.Username), roles);
+            GenericPrincipal principal = new GenericPrincipal(new GenericIdentity(client.Username), client.Roles);
             IEnumerable<ResourceAccess> accessList = this.resourceAuthorizationProvider.ListResourceAccesses(name, method);
             ResourcePermission permission = new ResourcePermission(principal, accessList);
-            permission.Demand();
+            //permission.Demand();
 
         }
 

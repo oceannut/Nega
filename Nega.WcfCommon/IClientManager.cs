@@ -12,7 +12,7 @@ namespace Nega.WcfCommon
     public interface IClientManager
     {
 
-        Client AddClient(string username, string userToken = null);
+        Client AddClient(string username, string userToken = null, string[] roles = null);
 
         Client RemoveClient(string username);
 

@@ -18,6 +18,14 @@ namespace Nega.Common
 
         public string IP { get; set; }
 
+        public string[] Roles
+        {
+            get 
+            { 
+                return new string[] { "admin" }; 
+            }
+        }
+
     }
 
 }

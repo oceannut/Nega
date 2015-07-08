@@ -52,7 +52,7 @@ namespace Nega.WcfCommon
             this.clients = new List<Client>();
         }
 
-        public Client AddClient(string username, string userToken = null)
+        public Client AddClient(string username, string userToken = null, string[] roles = null)
         {
             lock (lockObj)
             {

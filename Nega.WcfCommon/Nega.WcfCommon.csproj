@@ -45,6 +45,7 @@
     <Compile Include="ConnectionClient.cs" />
     <Compile Include="IClientManager.cs" />
     <Compile Include="Utilities\OperationContextHelper.cs" />
+    <Compile Include="Utilities\WebHelper.cs" />
     <Compile Include="Utilities\WebOperationContextHelper.cs" />
     <Compile Include="Web\WebClientManager.cs" />
     <Compile Include="Utilities\JsonHelper.cs" />

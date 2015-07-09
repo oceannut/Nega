@@ -20,19 +20,10 @@ namespace Nega.Common
             this.auditWriter = auditWriter;
         }
 
-        public void Audit(string resourceName, int resourceMethod, string content, Func<DateTime> timestampFactory = null)
-        {
-            Audit(
-                new Resource
-                {
-                    Name = resourceName,
-                    Method = resourceMethod
-                }, 
-                content, 
-                timestampFactory);
-        }
-
-        public void Audit(string resourceName, int resourceMethod, string content, int priority, Func<DateTime> timestampFactory = null)
+        public void Audit(string resourceName, int resourceMethod, string content,
+            OperationResult? result = OperationResult.Success,
+            int? priority = AuditManager.DefaultPriority, 
+            Func<DateTime> timestampFactory = null)
         {
             Audit(
                 new Resource
@@ -41,23 +32,22 @@ namespace Nega.Common
                     Method = resourceMethod
                 },
                 content,
+                result,
                 priority,
                 timestampFactory);
         }
 
-        public void Audit(Resource resource, string content, Func<DateTime> timestampFactory = null)
-        {
-            Audit(resource, content, AuditManager.defaultPriority, timestampFactory);
-        }
-
-        public void Audit(Resource resource, string content, int priority, Func<DateTime> timestampFactory = null)
+        public void Audit(Resource resource, string content,
+            OperationResult? result = OperationResult.Success,
+            int? priority = AuditManager.DefaultPriority, 
+            Func<DateTime> timestampFactory = null)
         {
             Audit(
                 new AuditEntry
                 {
                     Resource = resource,
                     Content = content,
-                    Priority = priority,
+                    Priority = priority.HasValue ? priority.Value : AuditManager.DefaultPriority,
                     Creation = timestampFactory == null ? DateTime.Now : timestampFactory()
                 });
         }
@@ -74,8 +64,8 @@ namespace Nega.Common
             {
                 throw new ArgumentException("entry.Resource");
             }
-            if (entry.Priority < AuditManager.minPriority
-                || entry.Priority > AuditManager.maxPriority)
+            if (entry.Priority < AuditManager.MinPriority
+                || entry.Priority > AuditManager.MaxPriority)
             {
                 throw new ArgumentOutOfRangeException("entry.Priority");
             }
@@ -85,8 +75,15 @@ namespace Nega.Common
                 Client client = this.clientFinder.OperationClient;
                 if (client != null)
                 {
-                    entry.User = client.Username;
-                    entry.UserCategory = ThreadUserCategory.User;
+                    if (!string.IsNullOrWhiteSpace(client.Username))
+                    {
+                        entry.User = client.Username;
+                        entry.UserCategory = ThreadUserCategory.User;
+                    }
+                    else
+                    {
+                        entry.UserCategory = ThreadUserCategory.Service;
+                    }
                     entry.Client = client.IP;
                 }
                 else
@@ -96,7 +93,7 @@ namespace Nega.Common
             }
             else
             {
-                entry.UserCategory = ThreadUserCategory.Service;
+                entry.UserCategory = ThreadUserCategory.User;
             }
 
             if (entry.Creation == DateTime.MinValue)

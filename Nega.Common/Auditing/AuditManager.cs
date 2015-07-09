@@ -10,9 +10,9 @@ namespace Nega.Common
     public static class AuditManager
     {
 
-        public const int minPriority = 1;
-        public const int maxPriority = 10;
-        public const int defaultPriority = 5;
+        public const int MinPriority = 1;
+        public const int MaxPriority = 10;
+        public const int DefaultPriority = 5;
 
         private static IAuditor auditor;
         public static IAuditor Auditor

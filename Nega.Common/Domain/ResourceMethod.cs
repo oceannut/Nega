@@ -19,6 +19,9 @@ namespace Nega.Common
         public const int COUNT = 0x10;
         public const int LIST = 0x20;
 
+        public const int SIGNIN = 0x100;
+        public const int SIGNOUT = 0x200;
+
         public static readonly ResourceMethod METHOD_CREATE = new ResourceMethod(CREATE, R.MethodCreate);
         public static readonly ResourceMethod METHOD_UPDATE = new ResourceMethod(UPDATE, R.MethodUpdate);
         public static readonly ResourceMethod METHOD_RETRIEVE = new ResourceMethod(RETRIEVE, R.MethodRetrieve);

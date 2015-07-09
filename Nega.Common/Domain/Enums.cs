@@ -13,4 +13,15 @@ namespace Nega.Common
         Service
     }
 
+    [DataContract]
+    public enum OperationResult
+    {
+        [EnumMember]
+        Success,
+        [EnumMember]
+        Failure,
+        [EnumMember]
+        Cancel
+    }
+
 }

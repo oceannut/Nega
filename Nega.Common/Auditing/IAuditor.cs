@@ -10,13 +10,15 @@ namespace Nega.Common
     public interface IAuditor
     {
 
-        void Audit(string resourceName, int resourceMethod, string content, Func<DateTime> timestampFactory = null);
+        void Audit(string resourceName, int resourceMethod, string content,
+            OperationResult? result = OperationResult.Success,
+            int? priority = AuditManager.DefaultPriority,
+            Func<DateTime> timestampFactory = null);
 
-        void Audit(string resourceName, int resourceMethod, string content, int priority, Func<DateTime> timestampFactory = null);
-
-        void Audit(Resource resource, string content, Func<DateTime> timestampFactory = null);
-
-        void Audit(Resource resource, string content, int priority, Func<DateTime> timestampFactory = null);
+        void Audit(Resource resource, string content, 
+            OperationResult? result = OperationResult.Success,
+            int? priority = AuditManager.DefaultPriority, 
+            Func<DateTime> timestampFactory = null);
 
         void Audit(AuditEntry entry);
 

@@ -34,6 +34,9 @@ namespace Nega.Common
         public string Content { get; set; }
 
         [DataMember]
+        public OperationResult Result { get; set; }
+
+        [DataMember]
         public DateTime Creation { get; set; }
 
     }

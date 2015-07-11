@@ -22,7 +22,9 @@ namespace Nega.Common
     public interface IAuthenticationProvider
     {
 
-        AuthenticationResult Authenticate(string username, string pwd, out string[] roles);
+        AuthenticationResult Authenticate(string username, string pwd, 
+            string client,
+            out string[] roles);
 
     }
 

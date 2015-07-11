@@ -94,14 +94,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <None Include="Security\ClientPrincipal.cs__" />
     <Compile Include="Security\GenericCredentialsProvider.cs" />
     <Compile Include="Security\ICredentialsProvider.cs" />
     <Compile Include="Security\ResourceAccess.cs" />
-    <None Include="Security\GenericPrincipalProvider.cs__" />
     <Compile Include="Security\IAuthenticationProvider.cs" />
     <Compile Include="Security\IResourceAuthorizationProvider.cs" />
-    <None Include="Security\IPrincipalProvider.cs__" />
     <Compile Include="Domain\Resource.cs" />
     <Compile Include="Domain\ResourceAttribute.cs" />
     <Compile Include="Security\ResourcePermission.cs" />

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -9,7 +10,7 @@ using System.Windows.Threading;
 namespace Nega.WpfCommon
 {
 
-    public static class TaskEx
+    public static class TaskHelper
     {
 
         public static void ExcuteOnUIThread(this Task task,
@@ -96,5 +97,22 @@ namespace Nega.WpfCommon
                 });
         }
 
+        public static void HandleWebException(AggregateException ex)
+        {
+            if (ex != null && ex.InnerExceptions != null)
+            {
+                foreach (var inner in ex.InnerExceptions)
+                {
+                    WebException webException = inner as WebException;
+                    if (webException != null)
+                    {
+                        WebExceptionHelper.Handle(webException);
+                    }
+                }
+                
+            }
+        }
+
     }
+
 }

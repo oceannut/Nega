@@ -61,6 +61,15 @@ namespace Nega.WpfCommon.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to 服务异常，操作失败。.
+        /// </summary>
+        internal static string DefaultServiceExceptionMessage {
+            get {
+                return ResourceManager.GetString("DefaultServiceExceptionMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to 系统异常，操作失败。.
         /// </summary>
         internal static string DefaultSystemExceptionMessage {

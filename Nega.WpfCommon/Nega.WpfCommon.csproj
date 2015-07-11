@@ -85,8 +85,9 @@
     </Compile>
     <Compile Include="Utilities\MessageBoxHelper.cs" />
     <Compile Include="Utilities\PasswordBoxHelper.cs" />
-    <Compile Include="Utilities\TaskEx.cs" />
+    <Compile Include="Utilities\TaskHelper.cs" />
     <Compile Include="Utilities\UIThreadHelper.cs" />
+    <Compile Include="Utilities\WebExceptionHelper.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

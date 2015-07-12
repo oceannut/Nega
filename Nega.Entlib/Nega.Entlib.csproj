@@ -88,6 +88,8 @@
   <ItemGroup>
     <Compile Include="Logging\LoggerFactoryImpl.cs" />
     <Compile Include="Logging\LoggerImpl.cs" />
+    <Compile Include="Objects\IObjectsConfig.cs" />
+    <Compile Include="Objects\ObjectsFactory.cs" />
     <Compile Include="Security\ResourceAuthorizationCallHandler.cs" />
     <Compile Include="Security\ResourceAuthorizationCallHandlerAttribute.cs" />
     <Compile Include="Security\ResourceAuthorizationCallHandlerData.cs" />
